@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Khám phá văn hóa dân tộc Tày – dân tộc thiểu số đông nhất Việt Nam. Lịch sử, ngôn ngữ, phong tục, trang phục, ẩm thực và di sản UNESCO Hát Then."/>
+<meta name="keywords" content="dân tộc Tày, văn hóa Tày, Hát Then UNESCO, dân tộc thiểu số Việt Nam, nhà sàn Tày"/>
+<meta property="og:title" content="Dân Tộc Tày – Khám Phá Văn Hóa"/>
+<meta property="og:description" content="Hành trình ngàn năm văn hóa dân tộc Tày – di sản UNESCO, ẩm thực, trang phục và lịch sử."/>
+<meta property="og:type" content="website"/>
+<title>Dân Tộc Tày – Khám Phá Văn Hóa</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏔️</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- SKIP TO CONTENT -->
+<a href="#overview" class="skip-link">Bỏ qua đến nội dung chính</a>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-symbol">🏔️</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-text">Đang tải văn hóa Tày…</div>
+</div>
+
+<!-- CANVAS -->
+<canvas id="pc"></canvas>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-t" id="curT"></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-label="Xem ảnh" aria-modal="true">
+  <button id="lightbox-close" aria-label="Đóng">✕</button>
+  <button id="lightbox-prev" aria-label="Ảnh trước">‹</button>
+  <img id="lightbox-img" src="" alt="Ảnh phóng to"/>
+  <div id="lightbox-caption"></div>
+  <button id="lightbox-next" aria-label="Ảnh tiếp">›</button>
+</div>
+
+<!-- NAV -->
+<nav id="nav" aria-label="Điều hướng chính">
+  <a href="#hero" class="nav-logo" aria-label="Về trang đầu">✦ <span>Dân Tộc</span> Tày</a>
+  <ul class="nl" id="nl">
+    <li><a href="#overview">Dân số</a></li>
+    <li><a href="#history">Lịch sử</a></li>
+    <li><a href="#language">Ngôn ngữ</a></li>
+    <li><a href="#culture">Văn hóa</a></li>
+    <li><a href="#social">Xã hội</a></li>
+    <li><a href="#religion">Tín ngưỡng</a></li>
+    <li><a href="#costume">Trang phục</a></li>
+    <li><a href="#quiz">🎮 Quiz</a></li>
+    <li><a href="#contemporary">Bảo tồn</a></li>
+  </ul>
+  <div class="burger" id="burger" onclick="toggleNav()" aria-label="Mở menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-ov"></div>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+  <div class="hc">
+    <div class="h-eye">Di sản văn hóa Việt Nam</div>
+    <h1 class="h-title">Khám Phá<span class="acc">Dân Tộc Tày</span></h1>
+    <p class="h-sub">
+      Hành trình ngàn năm văn hóa —
+      <span id="typing-hero" class="typing-text" style="color:var(--gold2);font-weight:600"></span>
+    </p>
+    <div class="h-pills">
+      <div class="pill"><span class="pn">1,845,492</span><span class="pl">Dân số 2019</span></div>
+      <div class="pill"><span class="pn">#1</span><span class="pl">DTTS đông nhất</span></div>
+      <div class="pill"><span class="pn">63/63</span><span class="pl">Tỉnh thành</span></div>
+      <div class="pill"><span class="pn">UNESCO</span><span class="pl">Di sản 2019</span></div>
+    </div>
+    <div class="h-btns">
+      <a href="#overview" class="btn-p">Khám phá ngay ✦</a>
+      <a href="#quiz" class="btn-s">🎮 Chơi Quiz</a>
+    </div>
+  </div>
+  <div class="scroll-ind">Cuộn xuống</div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-in">
+    <div class="si rv"><div class="sn">~2000</div><div class="sl">Năm lịch sử</div></div>
+    <div class="si rv d1"><div class="sn">94.9%</div><div class="sl">Tỷ lệ biết chữ</div></div>
+    <div class="si rv d2"><div class="sn">8</div><div class="sl">Chủ đề văn hóa</div></div>
+    <div class="si rv d3"><div class="sn">2019</div><div class="sl">UNESCO ghi danh</div></div>
+    <div class="si rv d4"><div class="sn">100+</div><div class="sl">Làng nghề truyền thống</div></div>
+  </div>
+</div>
+
+<!-- GALLERY STRIP -->
+<div class="gal-strip-wrap">
+  <div class="con">
+    <p style="text-align:center;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem">✦ Hình ảnh dân tộc Tày ✦</p>
+    <div class="gallery-strip">
+      <div class="gs-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tay_Women.jpg/400px-Tay_Women.jpg" onerror="this.src='https://placehold.co/220x160/0d2b2b/d4a843?text=Phụ+nữ+Tày'" alt="Phụ nữ dân tộc Tày"/><div class="gs-label">Phụ nữ dân tộc Tày</div></div>
+      <div class="gs-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Then_Singing.JPG/400px-Then_Singing.JPG" onerror="this.src='https://placehold.co/220x160/0d2b2b/d4a843?text=Hát+Then'" alt="Hát Then"/><div class="gs-label">Hát Then – Di sản UNESCO</div></div>
+      <div class="gs-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Dan_Tinh_lute_from_Vietnam.jpg/400px-Dan_Tinh_lute_from_Vietnam.jpg" onerror="this.src='https://placehold.co/220x160/0f3d2e/f5d07a?text=Đàn+Tính'" alt="Đàn Tính"/><div class="gs-label">Đàn Tính – Nhạc cụ linh hồn</div></div>
+      <div class="gs-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Nh%C3%A0_ng%C6%B0%E1%BB%9Di_T%C3%A0y_%28%C4%90%E1%BB%8Bnh_H%C3%B3a_-_Th%C3%A1i_Nguy%C3%AAn%29.jpg/400px-Nh%C3%A0_ng%C6%B0%E1%BB%9Di_T%C3%A0y_%28%C4%90%E1%BB%8Bnh_H%C3%B3a_-_Th%C3%A1i_Nguy%C3%AAn%29.jpg" onerror="this.src='https://placehold.co/220x160/0d2b2b/5dd4a8?text=Nhà+sàn+Tày'" alt="Nhà sàn người Tày"/><div class="gs-label">Nhà sàn truyền thống</div></div>
+      <div class="gs-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Pac_Ngoi_homestay.JPG/400px-Pac_Ngoi_homestay.JPG" onerror="this.src='https://placehold.co/220x160/0f3d2e/d4a843?text=Homestay+Pắc+Ngòi'" alt="Homestay Pắc Ngòi"/><div class="gs-label">Homestay Pắc Ngòi – Ba Bể</div></div>
+      <div class="gs-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pac_Ngoi_rice_field.JPG/400px-Pac_Ngoi_rice_field.JPG" onerror="this.src='https://placehold.co/220x160/0d2b2b/f5d07a?text=Ruộng+lúa'" alt="Ruộng lúa Pắc Ngòi"/><div class="gs-label">Ruộng lúa vùng Tày</div></div>
+      <div class="gs-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ba-Be-Lake-_Then-singing.jpg/400px-Ba-Be-Lake-_Then-singing.jpg" onerror="this.src='https://placehold.co/220x160/0d2b2b/5dd4a8?text=Hồ+Ba+Bể'" alt="Hát Then bên hồ Ba Bể"/><div class="gs-label">Hát Then bên hồ Ba Bể</div></div>
+      <div class="gs-item"><img src="https://upload.wikimedia.org/wikipedia/commons/9/97/TrangphucTay.jpg" onerror="this.src='https://placehold.co/220x160/0f3d2e/f5d07a?text=Trang+phục'" alt="Trang phục Tày"/><div class="gs-label">Trang phục truyền thống</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COUNTER -->
+<div class="counter-section">
+  <div class="con">
+    <div class="counter-grid">
+      <div class="counter-item rv d1"><span class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tay_Women.jpg/80px-Tay_Women.jpg" alt="" class="icon-img"/></span><span class="num" data-counter data-target="1845492">0</span><span class="lbl">Dân số (2019)</span></div>
+      <div class="counter-item rv d2"><span class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pac_Ngoi_rice_field.JPG/80px-Pac_Ngoi_rice_field.JPG" alt="" class="icon-img"/></span><span class="num" data-counter data-target="63">0</span><span class="lbl">Tỉnh thành có mặt</span></div>
+      <div class="counter-item rv d3"><span class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Dong_Son_Bronze_Drum_19.jpg/80px-Dong_Son_Bronze_Drum_19.jpg" alt="" class="icon-img"/></span><span class="num" data-counter data-target="2000">0</span><span class="lbl">Năm lịch sử</span></div>
+      <div class="counter-item rv d4"><span class="icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Dan_Tinh_lute_from_Vietnam.jpg/80px-Dan_Tinh_lute_from_Vietnam.jpg" alt="" class="icon-img"/></span><span class="num" data-counter data-target="2019">0</span><span class="lbl">UNESCO ghi danh</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 1. DÂN SỐ -->
+<section id="overview" class="sp">
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag">Thông tin cơ bản</div>
+      <h2 class="stit">Dân Số & <em>Phân Bố</em></h2>
+      <div class="gline"></div>
+      <p class="sdesc">Từ vùng núi Đông Bắc đến khắp 63 tỉnh thành, người Tày mang theo bản sắc văn hóa ngàn năm trong từng bước chân.</p>
+    </div>
+    <div class="g2">
+      <div class="rvl">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--text);margin-bottom:1.5rem">Xu hướng tăng trưởng dân số</h3>
+        <div class="sbw" id="sb1">
+          <div class="sbi"><div class="sbh"><span>1999</span><span>1.400.519 người</span></div><div class="sbt"><div class="sbf" data-w="76"></div></div></div>
+          <div class="sbi"><div class="sbh"><span>2009</span><span>1.626.392 người</span></div><div class="sbt"><div class="sbf" data-w="88"></div></div></div>
+          <div class="sbi"><div class="sbh"><span>2019</span><span>1.845.492 người</span></div><div class="sbt"><div class="sbf" data-w="100"></div></div></div>
+        </div>
+        <div class="hl" style="margin-top:1.5rem">
+          <strong>Cơ cấu giới tính 2019:</strong> Nam 918.155 · Nữ 927.337<br>
+          <strong>Tỷ lệ tăng trưởng:</strong> ~31,8% trong 20 năm (1999–2019)
+        </div>
+        <p style="font-size:.78rem;color:var(--textl);margin-top:.5rem">Nguồn: Tổng cục Thống kê – Điều tra 53 DTTS 2019</p>
+      </div>
+      <div class="rvr">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--text);margin-bottom:1.5rem">Phân bố theo tỉnh (Top 5)</h3>
+        <div class="sbw" id="sb2">
+          <div class="sbi"><div class="sbh"><span>Lạng Sơn</span><span>282.014 (15,3%)</span></div><div class="sbt"><div class="sbf" data-w="100"></div></div></div>
+          <div class="sbi"><div class="sbh"><span>Cao Bằng</span><span>216.577 (11,7%)</span></div><div class="sbt"><div class="sbf" data-w="77"></div></div></div>
+          <div class="sbi"><div class="sbh"><span>Tuyên Quang</span><span>205.624 (11,1%)</span></div><div class="sbt"><div class="sbf" data-w="73"></div></div></div>
+          <div class="sbi"><div class="sbh"><span>Hà Giang</span><span>192.702 (10,4%)</span></div><div class="sbt"><div class="sbf" data-w="68"></div></div></div>
+          <div class="sbi"><div class="sbh"><span>Bắc Kạn</span><span>165.055 (8,9%)</span></div><div class="sbt"><div class="sbf" data-w="59"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="g3" style="margin-top:3rem">
+      <div class="card rv d1" data-detail-id="cutru">
+        <div class="ci">🏔️</div><h3>Đặc điểm cư trú</h3>
+        <p>Người Tày định cư ở vùng miền núi thấp, dọc các thung lũng màu mỡ, ven suối sông. Bản làng xây tựa chân núi, thuận lợi cho canh tác lúa nước và giao thương tại các chợ phiên biên giới.</p>
+      </div>
+      <div class="card rv d2" data-detail-id="dicu">
+        <div class="ci">✈️</div><h3>Mô hình di cư</h3>
+        <ul>
+          <li><strong>Lịch sử:</strong> Di cư từ Quảng Tây (TQ) ~TK XI–XII</li>
+          <li><strong>Hiện đại:</strong> Di cư vào Tây Nguyên, Đông Nam Bộ</li>
+          <li><strong>Đô thị hóa:</strong> Về Hà Nội, Thái Nguyên học tập, làm việc</li>
+        </ul>
+      </div>
+      <div class="card rv d3" data-detail-id="kinhte">
+        <div class="ci">📈</div><h3>Kinh tế – Xã hội</h3>
+        <ul>
+          <li>Tỷ lệ biết chữ: <strong>94,9%</strong></li>
+          <li>Trẻ đi học tiểu học: <strong>100,4%</strong></li>
+          <li>Trẻ đi học THCS: <strong>97,5%</strong></li>
+          <li>Nông nghiệp lúa nước + kinh tế vườn rừng (hồi, quế)</li>
+          <li>Phát triển mạnh du lịch homestay</li>
+        </ul>
+        <div style="margin-top:.8rem">
+          <a href="https://nhandan.vn/dan-toc-tay-post723931.html" class="src" target="_blank">Báo Nhân Dân</a>
+          <a href="https://sodantoctongiao.hanoi.gov.vn/articles/3380" class="src" target="_blank">Sở DT Hà Nội</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. LỊCH SỬ -->
+<section id="history" class="sp ds">
+  <div class="wave-top"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" class="wave-fill-cream"/></svg></div>
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag">Bối cảnh lịch sử</div>
+      <h2 class="stit">Nguồn Gốc & <em>Lịch Sử</em></h2>
+      <div class="gline"></div>
+      <p class="sdesc">Từ nguồn gốc Austro-Tai ngàn năm đến sự kiện UNESCO 2019 – hành trình lịch sử hào hùng của dân tộc Tày.</p>
+    </div>
+    <div class="g2">
+      <div class="rvl">
+        <div class="tl-wrap">
+          <div class="tli rv">
+            <div class="tld"></div>
+            <div class="tly">Thiên niên kỷ 1 TCN</div>
+            <div class="tlt">Nguồn gốc Austro-Tai</div>
+            <div class="tlb">Tổ tiên người Tày thuộc nhóm ngôn ngữ Thái–Kadai, là cư dân bản địa lâu đời vùng Đông Bắc. Di cư từ Quảng Tây (TQ) hoà trộn với cư dân bản địa Việt Bắc.</div>
+          </div>
+          <div class="tli rv d1">
+            <div class="tld"></div>
+            <div class="tly">TK XI – XII</div>
+            <div class="tlt">Hình thành cộng đồng & Chế độ Quằng</div>
+            <div class="tlb">Người Tày xây dựng chế độ quằng – tổ chức phong kiến sơ kỳ, quý tộc thế tập. Quằng nắm quyền sở hữu đất đai, rừng núi, sông suối trong phạm vi cai quản.</div>
+          </div>
+          <div class="tli rv d2">
+            <div class="tld"></div>
+            <div class="tly">Thời nhà Mạc (TK XVI)</div>
+            <div class="tlt">Mở rộng địa bàn Đông Bắc</div>
+            <div class="tlb">Nhiều nhóm người Tày di cư từ Cao Bằng lan tỏa khắp vùng Đông Bắc, thiết lập các phiên thần tự trị dưới ảnh hưởng triều đình phong kiến Việt Nam.</div>
+          </div>
+          <div class="tli rv d3">
+            <div class="tld"></div>
+            <div class="tly">Sau 1975</div>
+            <div class="tlt">Chính sách dân tộc thiểu số</div>
+            <div class="tlb">Nhà nước Việt Nam triển khai chính sách DTTS qua Ủy ban Dân tộc, đầu tư hạ tầng, bảo tồn văn hóa và phát triển kinh tế vùng Đông Bắc.</div>
+          </div>
+          <div class="tli rv d4">
+            <div class="tld"></div>
+            <div class="tly">2019</div>
+            <div class="tlt">✨ UNESCO ghi danh Di sản nhân loại</div>
+            <div class="tlb">Thực hành Then của người Tày, Nùng, Thái được UNESCO ghi danh Di sản văn hóa phi vật thể đại diện của nhân loại.</div>
+          </div>
+        </div>
+      </div>
+      <div class="rvr">
+        <div class="card cd" style="margin-bottom:1.5rem" data-detail-id="vung-tai">
+          <div class="ci">🌏</div><h3>Vùng liên tục ngôn ngữ Tai</h3>
+          <p>Người Tày có mối liên hệ với dân tộc Nùng (Việt Nam) và Choang/Zhuang (Trung Quốc) — tạo thành vùng liên tục ngôn ngữ Tai trải từ miền Nam Trung Quốc xuống Đông Nam Á.</p>
+        </div>
+        <div class="card cd" style="margin-bottom:1.5rem" data-detail-id="tuongtac">
+          <div class="ci">⚔️</div><h3>Tương tác lịch sử</h3>
+          <p>Người Tày có quan hệ đan xen với người Kinh qua các triều đại phong kiến, thời thuộc địa Pháp và hai cuộc kháng chiến. Dù vậy, họ luôn giữ gìn bản sắc văn hóa riêng biệt.</p>
+        </div>
+        <div class="card cd" data-detail-id="thichnghi">
+          <div class="ci">🔄</div><h3>Thích nghi & Hiện đại hóa</h3>
+          <p>Người Tày khéo léo cân bằng giữa hiện đại hóa và bảo tồn — từ ứng dụng kỹ thuật nông nghiệp mới đến phát triển du lịch homestay, trong khi vẫn duy trì tiếng nói và nghi lễ truyền thống.</p>
+        </div>
+        <div style="margin-top:1rem">
+          <a href="https://vi.wikipedia.org/wiki/Ng%C6%B0%E1%BB%9Di_T%C3%A0y" class="src" target="_blank">Wikipedia</a>
+          <a href="https://dnulib.edu.vn/dan-toc-tay-o-dau/" class="src" target="_blank">DNU Library</a>
+          <a href="https://vanhoatamlinh.com/dan-toc-tay/" class="src" target="_blank">Văn hoá tâm linh</a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pac_Ngoi_rice_field.JPG/1200px-Pac_Ngoi_rice_field.JPG" onerror="this.src='https://placehold.co/1200x400/0a1628/d4a843?text=Ruộng+lúa+vùng+Tày'" alt="Ruộng lúa Pắc Ngòi – Ba Bể"/>
+      <div class="par-caption">
+        <h3>Quê hương của<br/>Dân Tộc Tày</h3>
+        <p>Ruộng lúa Pắc Ngòi (Ba Bể, Bắc Kạn) — mảnh đất ngàn năm của người Tày.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. NGÔN NGỮ -->
+<section id="language" class="sp">
+  <div class="wave-top"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" class="wave-fill-dark"/></svg></div>
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag">Ngôn ngữ & Giao tiếp</div>
+      <h2 class="stit">Tiếng Tày – <em>Di Sản Ngôn Ngữ Sống</em></h2>
+      <div class="gline"></div>
+      <p class="sdesc">Một trong những ngôn ngữ Tai lớn nhất Việt Nam với ~1,63 triệu người nói, tiếng Tày là linh hồn của bản sắc dân tộc.</p>
+    </div>
+    <div class="lg2">
+      <div class="lb rvl">
+        <h3>🗣️ Phân loại & Phương ngữ</h3>
+        <div class="hl">Thuộc <strong>ngữ hệ Thái–Ka Đai (Tai–Kadai)</strong>, quan hệ gần với tiếng Nùng, tiếng Thái và tiếng Choang (Zhuang) ở Trung Quốc.</div>
+        <p style="font-size:.83rem;color:var(--textm);margin:.8rem 0 .4rem">Các phương ngữ chính:</p>
+        <div class="tags">
+          <span class="tag">Tày Bảo Lạc</span><span class="tag">Tày Trùng Khánh</span>
+          <span class="tag">Tày miền Bắc</span><span class="tag">Tày miền Nam</span>
+          <span class="tag">Tày miền Trung</span><span class="tag g">Thu Lao</span><span class="tag g">Pa Dí</span>
+        </div>
+        <a href="https://bdttg.gov.vn/gioi-thieu/cong-dong-54-dan-toc/nguoi-tay.htm" class="src" style="margin-top:1rem;display:inline-flex" target="_blank">Ban Dân tộc TW</a>
+        <a href="https://en.wikipedia.org/wiki/T%C3%A0y_language" class="src" target="_blank">Wikipedia (EN)</a>
+      </div>
+      <div class="lb rvr">
+        <h3>✍️ Hệ thống chữ viết</h3>
+        <div class="hl"><strong>Chữ Nôm Tày:</strong> Dựa trên chữ Hán, ghi truyện, thơ và nghi lễ tâm linh truyền thống.</div>
+        <div class="hl"><strong>Chữ Hán:</strong> Ảnh hưởng lịch sử qua học chữ Hán theo cách đọc Hán–Việt.</div>
+        <div class="hl"><strong>Latin hiện đại:</strong> Bảng chữ cái Latin cải biến dựa trên chữ quốc ngữ tiếng Việt — đang sử dụng ngày nay.</div>
+        <div class="hl" style="border-left-color:var(--red)"><strong>⚠️ Nguy cơ:</strong> Tỷ lệ biết chữ Tày chỉ ~5%. Người trẻ dùng tiếng Việt nhiều hơn → cần bảo tồn khẩn cấp.</div>
+        <a href="https://en.baoquocte.vn/preserving-the-language-of-the-tay-and-nung-ethnic-groups-of-lang-son-248129.html" class="src" style="display:inline-flex;margin-top:.5rem" target="_blank">Báo Quốc tế</a>
+      </div>
+    </div>
+    <div class="g3" style="margin-top:2rem">
+      <div class="card rv d1" data-detail-id="hatthen"><div class="ci"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Then_Singing.JPG/80px-Then_Singing.JPG" alt="" class="ci-img"/></div><h3>Hát Then – Di sản UNESCO</h3><p>Hát Then là linh hồn dân ca Tày: vừa là nghi lễ tâm linh (cầu may, chữa bệnh, cầu mùa), vừa kể chuyện thần thoại qua tiếng đàn tính huyền bí. <strong>UNESCO công nhận 2019.</strong></p></div>
+      <div class="card rv d2" data-detail-id="truyenmieng"><div class="ci">💬</div><h3>Kho truyền miệng phong phú</h3><ul><li>Truyện cổ tích, thần thoại, sử thi</li><li>Tục ngữ, câu đố dân gian</li><li>Lượn cọi – hát giao duyên nam nữ</li><li>Hát Quan lang – hát đối đám cưới</li><li>Hát ru, hát tang lễ, hát lễ hội</li></ul></div>
+      <div class="card rv d3" data-detail-id="dantinh"><div class="ci"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Dan_Tinh_lute_from_Vietnam.jpg/80px-Dan_Tinh_lute_from_Vietnam.jpg" alt="" class="ci-img"/></div><h3>Đàn Tính – Nhạc cụ linh hồn</h3><p>Làm từ bầu khô và gỗ sa mộc/dâu, đàn tính hiện diện trong mọi sinh hoạt văn hóa tinh thần của người Tày. Tiếng đàn truyền tải thần thoại, tín ngưỡng và lịch sử qua nhiều thế hệ.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. VĂN HÓA -->
+<section id="culture" class="sp ds">
+  <div class="wave-top"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" class="wave-fill-cream"/></svg></div>
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag">Phong tục & Truyền thống</div>
+      <h2 class="stit">Văn Hóa <em>Đặc Sắc</em></h2>
+      <div class="gline"></div>
+    </div>
+    <!-- MOSAIC -->
+    <div class="photo-mosaic">
+      <div class="mosaic-item" style="min-height:300px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ba-Be-Lake-_Then-singing.jpg/600px-Ba-Be-Lake-_Then-singing.jpg" onerror="this.src='https://placehold.co/600x300/0d2b2b/d4a843?text=Hát+Then+Hồ+Ba+Bể'" alt="Hát Then bên hồ Ba Bể" style="height:100%;min-height:300px"/>
+        <div class="mosaic-overlay">Hát Then bên hồ Ba Bể</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pac_Ngoi_rice_field.JPG/400px-Pac_Ngoi_rice_field.JPG" onerror="this.src='https://placehold.co/400x150/0f3d2e/f5d07a?text=Ruộng+Lúa'" alt="Ruộng lúa vùng Tày" style="height:150px"/>
+        <div class="mosaic-overlay">Ruộng lúa vùng Tày</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Nh%C3%A0_ng%C6%B0%E1%BB%9Di_T%C3%A0y_%28%C4%90%E1%BB%8Bnh_H%C3%B3a_-_Th%C3%A1i_Nguy%C3%AAn%29.jpg/400px-Nh%C3%A0_ng%C6%B0%E1%BB%9Di_T%C3%A0y_%28%C4%90%E1%BB%8Bnh_H%C3%B3a_-_Th%C3%A1i_Nguy%C3%AAn%29.jpg" onerror="this.src='https://placehold.co/400x150/0d2b2b/5dd4a8?text=Nhà+sàn+Tày'" alt="Nhà sàn người Tày" style="height:150px"/>
+        <div class="mosaic-overlay">Nhà sàn truyền thống</div>
+      </div>
+      <div class="mosaic-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tay_Women.jpg/400px-Tay_Women.jpg" onerror="this.src='https://placehold.co/400x150/0f3d2e/d4a843?text=Phụ+nữ+Tày'" alt="Phụ nữ dân tộc Tày" style="height:150px"/>
+        <div class="mosaic-overlay">Phụ nữ dân tộc Tày</div>
+      </div>
+    </div>
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tnav">
+        <button class="tbtn on" onclick="showTab('t1',this)">🏠 Cuộc sống</button>
+        <button class="tbtn" onclick="showTab('t2',this)">🎉 Lễ hội</button>
+        <button class="tbtn" onclick="showTab('t3',this)">🎨 Nghệ thuật</button>
+        <button class="tbtn" onclick="showTab('t4',this)">🍲 Ẩm thực</button>
+      </div>
+      <!-- TAB 1: CUỘC SỐNG -->
+      <div id="t1" class="tpane on">
+        <div class="g2">
+          <div>
+            <div class="card cd" style="margin-bottom:1.5rem" data-detail-id="giadinh">
+              <div class="ci">👨‍👩‍👧‍👦</div><h3>Cấu trúc gia đình</h3>
+              <p>Gia đình phụ hệ, đa thế hệ cùng chung sống. Nam giới quyết định việc lớn; nữ giới nổi tiếng dệt thổ cẩm và quản lý kinh tế hộ gia đình.</p>
+            </div>
+            <div class="card cd" data-detail-id="honnhan">
+              <div class="ci">💍</div><h3>Nghi thức hôn nhân</h3>
+              <div class="hl hld"><strong>So tuổi:</strong> Nhà trai xin lá số xem hợp tuổi</div>
+              <div class="hl hld"><strong>Ăn hỏi:</strong> Bánh chưng, thịt lợn, rượu</div>
+              <div class="hl hld"><strong>Lễ cưới:</strong> Hát Quan lang – đối đáp hai họ để đón dâu</div>
+            </div>
+          </div>
+          <div>
+            <div class="card cd" style="margin-bottom:1rem"><div style="font-size:1.5rem;margin-bottom:.5rem">👶</div><h3 style="font-size:1rem">Lễ đầy tháng (Khay bươn)</h3><p style="font-size:.85rem">Trình báo tổ tiên, đặt tên. Trẻ khó nuôi làm lễ "bán khoán" cho thần linh hoặc nhận cha mẹ nuôi.</p></div>
+            <div class="card cd" style="margin-bottom:1rem"><div style="font-size:1.5rem;margin-bottom:.5rem">🎊</div><h3 style="font-size:1rem">Lễ Mừng thọ</h3><p style="font-size:.85rem">Tại 49, 61, 73, 85, 100 tuổi ứng với Phúc–Thọ–Khang–Ninh–Kỳ Ry. Mời thầy cúng, nội tộc và bạn bè chia vui.</p></div>
+            <div class="card cd"><div style="font-size:1.5rem;margin-bottom:.5rem">🕯️</div><h3 style="font-size:1rem">Tang ma</h3><p style="font-size:.85rem">Thầy Tào/Thầy Mo dẫn linh hồn về tổ tiên. Tục Quạt ma và bài cúng tiễn hồn qua các cửa ải lên mường Trời.</p></div>
+          </div>
+        </div>
+      </div>
+      <!-- TAB 2: LỄ HỘI -->
+      <div id="t2" class="tpane">
+        <div class="g3">
+          <div class="card cd" data-detail-id="longtong"><div class="ci">🌾</div><h3>Lễ hội Lồng Tổng</h3><p>Tổ chức sau Tết Nguyên Đán – khởi đầu vụ mùa mới. Người cao tuổi đức độ cày luống đầu tiên. Hoạt động: tung còn, chọi gà, hát lượn giao duyên.</p></div>
+          <div class="card cd" data-detail-id="nanghai"><div class="ci">🌙</div><h3>Lễ hội Nàng Hai</h3><p>Lễ cầu mùa tại Quảng Uyên, Phục Hòa, Hạ Lang (Cao Bằng). Nghi lễ tâm linh sâu sắc gắn với tín ngưỡng thờ Nàng Trăng của cộng đồng người Tày.</p></div>
+          <div class="card cd" data-detail-id="capsac"><div class="ci">🎶</div><h3>Lễ Then & Lễ Cấp Sắc</h3><p><strong style="color:var(--gold2)">Lễ Then:</strong> Hát xướng + múa + đàn tính — nghi lễ tâm linh UNESCO 2019.<br><br><strong style="color:var(--gold2)">Cấp sắc:</strong> Phong sắc chứng chỉ cho người hành nghề mo, then, tào đã trưởng thành.</p></div>
+        </div>
+        <div class="video-section" style="margin-top:2rem">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);text-align:center;margin-bottom:1.2rem">🎬 Video: Lễ hội Lồng Tổng</h3>
+          <div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/rAonVn9sKnE" title="Lễ hội Lồng Tổng – Lễ hội xuống đồng" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.45);text-align:center;margin-top:.6rem">Nguồn: YouTube – Long Tong Festival: A Spring Celebration of Tay Culture</p>
+        </div>
+      </div>
+      <!-- TAB 3: NGHỆ THUẬT -->
+      <div id="t3" class="tpane">
+        <div class="g2">
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);margin-bottom:1.2rem">🎵 Âm nhạc & Dân ca</h3>
+            <div class="hl hld"><strong>Hát Then:</strong> Nghi lễ tâm linh kết hợp hát, múa, đàn tính. Di sản UNESCO 2019.</div>
+            <div class="hl hld"><strong>Lượn cọi:</strong> Hát giao duyên nam nữ trong lễ hội, đám cưới, mừng nhà mới.</div>
+            <div class="hl hld"><strong>Hát Quan lang:</strong> Hát đối đáp giữa hai họ trong đám cưới.</div>
+            <a href="https://nhandan.vn/dan-toc-tay-post723931.html" class="src" target="_blank">Báo Nhân Dân</a>
+            <a href="https://bbk.baothainguyen.vn/luon-coi-di-san-van-hoa-phi-vat-the-dac-sac-cua-dong-bao-tay-post22370.html" class="src" target="_blank">Báo Thái Nguyên</a>
+            <div class="video-section" style="margin-top:1.5rem">
+              <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold2);margin-bottom:1rem">🎬 Hát Then – Di sản UNESCO</h4>
+              <div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/SMfwyb1rF_w" title="Độc đáo di sản hát Then của dân tộc Tày" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+              <p style="font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.5rem">Nguồn: YouTube – Độc đáo di sản hát Then của dân tộc Tày ở Tuyên Quang</p>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);margin-bottom:1.2rem">🧶 Nghề thủ công</h3>
+            <div class="g2" style="gap:1rem">
+              <div class="card cd" style="padding:1.2rem"><div style="font-size:1.3rem;margin-bottom:.4rem">🧵</div><h3 style="font-size:.9rem">Dệt thổ cẩm</h3><p style="font-size:.8rem">Trồng bông → Se sợi → Dệt → Nhuộm chàm. Hoa văn đỏ, xanh, vàng đặc trưng.</p></div>
+              <div class="card cd" style="padding:1.2rem"><div style="font-size:1.3rem;margin-bottom:.4rem">🪵</div><h3 style="font-size:.9rem">Nghề mộc & Cọn nước</h3><p style="font-size:.8rem">Nhà sàn, đồ gia dụng. Cọn nước – biểu tượng trí tuệ kỹ thuật Tày.</p></div>
+              <div class="card cd" style="padding:1.2rem"><div style="font-size:1.3rem;margin-bottom:.4rem">🍶</div><h3 style="font-size:.9rem">Rượu ngô men lá</h3><p style="font-size:.8rem">Men từ 20+ loại lá rừng. Ngô nấu → Ủ men → Chưng cất cách thủy.</p></div>
+              <div class="card cd" style="padding:1.2rem"><div style="font-size:1.3rem;margin-bottom:.4rem">🎍</div><h3 style="font-size:.9rem">Đan lát tre nứa</h3><p style="font-size:.8rem">Dậu, thạp, gùi gánh nông sản — tinh xảo từ tre nứa song mây.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TAB 4: ẨM THỰC -->
+      <div id="t4" class="tpane">
+        <p style="font-size:.95rem;color:rgba(255,255,255,.65);margin-bottom:2rem;text-align:center">Ẩm thực Tày mang hương núi rừng, lấy <em style="color:var(--gold2)">mắc mật, lá cẩm, hạt mắc khén</em> làm linh hồn.</p>
+        <div class="g4">
+          <div class="fc rv d1" data-detail-id="xoi"><div class="ft"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/X%C3%B4i_ng%C5%A9_s%E1%BA%AFc.JPG/300px-X%C3%B4i_ng%C5%A9_s%E1%BA%AFc.JPG" alt="Xôi ngũ sắc" onerror="this.remove();this.parentElement.textContent='🍱'"/></div><div class="fb"><h4>Xôi ngũ sắc</h4><p>Gạo nếp nhuộm lá cẩm, hoa đậu biếc, nghệ. Tượng trưng ngũ hành — không thể thiếu trong lễ Tết.</p></div></div>
+          <div class="fc rv d2" data-detail-id="vitquay"><div class="ft"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Roasted_Peking_Duck_with_Vegetables_Meal.jpg/300px-Roasted_Peking_Duck_with_Vegetables_Meal.jpg" alt="Vịt quay" onerror="this.remove();this.parentElement.textContent='🦆'"/></div><div class="fb"><h4>Vịt quay mắc mật</h4><p>Đặc sản nổi tiếng nhất. Vịt bầu ướp lá mắc mật — hương thơm nồng nàn, vị chua ngọt đặc trưng.</p></div></div>
+          <div class="fc rv d3" data-detail-id="khaunhuc"><div class="ft"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/BraisedPorkBelly.JPG/300px-BraisedPorkBelly.JPG" alt="Khâu nhục" onerror="this.remove();this.parentElement.textContent='🥩'"/></div><div class="fb"><h4>Khâu nhục</h4><p>Thịt lợn hấp cách thủy lâu giờ. Không thể thiếu trong đám cưới và ngày lễ trọng đại.</p></div></div>
+          <div class="fc rv d4" data-detail-id="banhchung"><div class="ft"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Banh_Chung_in_Vietnam.jpg/300px-Banh_Chung_in_Vietnam.jpg" alt="Bánh chưng đen" onerror="this.remove();this.parentElement.textContent='🫓'"/></div><div class="fb"><h4>Bánh chưng đen</h4><p>Gạo nếp trộn tro bếp tạo màu đen bí ẩn. Biểu tượng văn hóa Tày trong dịp Tết.</p></div></div>
+          <div class="fc rv d1" data-detail-id="canuong"><div class="ft"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/C%C3%A1_l%C3%B3c_n%C6%B0%E1%BB%9Bng_trui.JPG/300px-C%C3%A1_l%C3%B3c_n%C6%B0%E1%BB%9Bng_trui.JPG" alt="Cá nướng" onerror="this.remove();this.parentElement.textContent='🐟'"/></div><div class="fb"><h4>Cá suối nướng</h4><p>Nướng than hoa, ướp hạt mắc khén và lá rừng. Giữ nguyên vị ngọt tự nhiên của cá suối vùng cao.</p></div></div>
+          <div class="fc rv d2" data-detail-id="canhmang"><div class="ft"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/TribalFood_BambooSoup.JPG/300px-TribalFood_BambooSoup.JPG" alt="Canh măng" onerror="this.remove();this.parentElement.textContent='🥬'"/></div><div class="fb"><h4>Canh măng rừng</h4><p>Măng chua, măng đắng, măng khô — nguyên liệu không thể thiếu trong bát canh ngày thường.</p></div></div>
+          <div class="fc rv d3" data-detail-id="thitmuoi"><div class="ft"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/RedCookedPorkBelly.jpg/300px-RedCookedPorkBelly.jpg" alt="Thịt lợn muối" onerror="this.remove();this.parentElement.textContent='🍢'"/></div><div class="fb"><h4>Thịt lợn muối chua</h4><p>Phương pháp bảo quản đặc trưng qua mùa đông dài. Vị chua đặc biệt từ lên men tự nhiên.</p></div></div>
+          <div class="fc rv d4" data-detail-id="pengkho"><div class="ft">🥢</div><div class="fb"><h4>Pẻng khô & Bún khô</h4><p>Pẻng làm từ gạo nếp đặc sản. Bún khô phơi tự nhiên nhiều ngày — dẻo dai, thơm gạo.</p></div></div>
+        </div>
+        <div style="margin-top:1.5rem;text-align:center">
+          <a href="https://vanhoanghethuat.vn/am-thuc-nguoi-tay-di-san-van-hoa-song-dong-2025-77760049.html" class="src" target="_blank">Văn hoá Nghệ thuật</a>
+          <a href="https://www.studocu.vn/vn/document/truong-dai-hoc-giao-thong-van-tai/kinh-te-chinh-tri-maclenin/am-thuc-cua-nguoi-tay-vnjvwvnwn/74326964" class="src" target="_blank">Studocu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. XÃ HỘI -->
+<section id="social" class="sp">
+  <div class="wave-top"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" class="wave-fill-dark"/></svg></div>
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag">Xã hội & Kinh tế</div>
+      <h2 class="stit">Đời Sống & <em>Tổ Chức Xã Hội</em></h2>
+      <div class="gline"></div>
+    </div>
+    <div class="g3">
+      <div class="card rv d1" data-detail-id="sinhke">
+        <div class="ci">🌾</div><h3>Kinh tế & Sinh kế</h3>
+        <ul>
+          <li>Làm ruộng nước lâu đời, thâm canh bậc thang</li>
+          <li>Vườn rừng: cọ, hồi, quế, cây ăn quả</li>
+          <li>Thủy lợi: mương, máng, đắp phai, cọn nước</li>
+          <li>Thủ công: dệt vải, đan lát, mộc, nhuộm chàm</li>
+          <li>Chợ phiên biên giới sầm uất</li>
+        </ul>
+        <a href="https://nhandan.vn/dan-toc-tay-post723931.html" class="src" style="margin-top:.8rem;display:inline-flex" target="_blank">Báo Nhân Dân</a>
+      </div>
+      <div class="card rv d2" data-detail-id="tochuc">
+        <div class="ci">🏘️</div><h3>Tổ chức xã hội</h3>
+        <ul>
+          <li>Bản ở chân núi hoặc ven suối, 15–20 nhà</li>
+          <li>Tên bản theo địa danh tự nhiên</li>
+          <li><strong>Chế độ quằng:</strong> Phong kiến sơ kỳ, quý tộc thế tập</li>
+          <li>Quằng sở hữu đất đai, rừng núi, sông suối</li>
+          <li>Nay theo luật pháp Nhà nước Việt Nam</li>
+        </ul>
+        <a href="http://www.cema.gov.vn/gioi-thieu/cong-dong-54-dan-toc/nguoi-tay.htm" class="src" style="margin-top:.8rem;display:inline-flex" target="_blank">Ủy ban Dân tộc</a>
+      </div>
+      <div class="card rv d3" data-detail-id="thachthuc">
+        <div class="ci">⚠️</div><h3>Thách thức đương đại</h3>
+        <ul>
+          <li>Học sinh vùng sâu đi đường xa đến trường</li>
+          <li>Tư tưởng "trọng nam khinh nữ" còn tồn tại</li>
+          <li>Một số hộ chưa được sử dụng điện lưới đầy đủ</li>
+          <li>Phá rừng ảnh hưởng sinh kế truyền thống</li>
+          <li>Áp lực đồng hóa văn hóa khi đô thị hóa</li>
+        </ul>
+        <a href="https://vietnam.opendevelopmentmekong.net/vi/topics/ethnic-minorities-and-indigenous-people/" class="src" style="margin-top:.8rem;display:inline-flex" target="_blank">Open Development</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. TÍN NGƯỠNG -->
+<section id="religion" class="sp ds">
+  <div class="wave-top"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" class="wave-fill-cream"/></svg></div>
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag">Tôn giáo & Tín ngưỡng</div>
+      <h2 class="stit">Đời Sống <em>Tâm Linh</em></h2>
+      <div class="gline"></div>
+      <p class="sdesc">Tín ngưỡng Then và thờ cúng tổ tiên là hai trụ cột tâm linh của người Tày — phong phú, huyền bí và đậm chất thiên nhiên.</p>
+    </div>
+    <div class="g3">
+      <div class="rc rv d1" data-detail-id="thocung"><span class="big"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Outlook_of_stilt_house_in_Khe_Ran_village%2C_Con_Cuong%2C_Nghe_An%2C_Vietnam%E2%91%A0.jpg/100px-Outlook_of_stilt_house_in_Khe_Ran_village%2C_Con_Cuong%2C_Nghe_An%2C_Vietnam%E2%91%A0.jpg" alt="Thờ cúng" class="rc-img"/></span><h3>Thờ cúng tổ tiên</h3><p>Bàn thờ ở gian giữa trang trọng nhất. Nghi thức cúng thiêng liêng trong mọi lễ vòng đời. Con cháu thờ phụng định kỳ vào ngày lễ Tết.</p></div>
+      <div class="rc rv d2" data-detail-id="tinnguongthen"><span class="big"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Dan_Tinh_lute_from_Vietnam.jpg/100px-Dan_Tinh_lute_from_Vietnam.jpg" alt="Tín ngưỡng Then" class="rc-img"/></span><h3>Tín ngưỡng Then</h3><p>Then Tậc (nam) & Mè Then (nữ) là cầu nối người–thần linh. Cầu an, giải hạn, cúng mụ qua hát xướng và đàn tính. <strong>UNESCO 2019.</strong></p></div>
+      <div class="rc rv d3" data-detail-id="vanvat"><span class="big">🌿</span><h3>Vạn vật hữu linh</h3><p>Vũ trụ 3 giới: trời, đất, nước. Thờ thổ thần, ma bếp, ma chuồng, thần suối. Mỗi bản có miếu thờ thổ công riêng.</p></div>
+      <div class="rc rv d4" data-detail-id="phatgiao"><span class="big"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Dong_Son_Bronze_Drum_19.jpg/100px-Dong_Son_Bronze_Drum_19.jpg" alt="Phật giáo" class="rc-img"/></span><h3>Phật giáo & Đạo giáo</h3><p>Thầy Tào (Đạo giáo) điều hành tang ma. Phật Bà Quan Âm và Phật giáo hòa nhập vào tín ngưỡng dân gian một số địa phương.</p></div>
+      <div class="rc rv d5" data-detail-id="nghilenongng"><span class="big"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pac_Ngoi_rice_field.JPG/100px-Pac_Ngoi_rice_field.JPG" alt="Nghi lễ nông nghiệp" class="rc-img"/></span><h3>Nghi lễ nông nghiệp</h3><p>Lễ Lồng Tổng, Lễ Nàng Hai gắn với chu kỳ nông nghiệp — thể hiện triết lý con người–thiên nhiên–thần linh là một thể thống nhất.</p></div>
+      <div class="rc rv" style="transition-delay:.6s" data-detail-id="kiengky"><span class="big">🔮</span><h3>Kiêng kỵ & Linh thiêng</h3><p>Gốc cây cổ thụ, khe suối, hang động là nơi linh thiêng. Nhiều kiêng kỵ gắn với vòng đời, sản xuất và thời điểm đặc biệt trong năm.</p></div>
+    </div>
+    <!-- POLAROID -->
+    <div class="polaroid-grid">
+      <div class="polaroid" style="--rot:-3deg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tay_Women.jpg/300px-Tay_Women.jpg" onerror="this.src='https://placehold.co/160x160/0d2b2b/d4a843?text=Phụ+nữ+Tày'" alt="Phụ nữ Tày"/><div class="polaroid-label">Phụ nữ dân tộc Tày</div></div>
+      <div class="polaroid" style="--rot:2deg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Then_Singing.JPG/300px-Then_Singing.JPG" onerror="this.src='https://placehold.co/160x160/0d2b2b/5dd4a8?text=Hát+Then'" alt="Hát Then"/><div class="polaroid-label">Hát Then – UNESCO</div></div>
+      <div class="polaroid" style="--rot:-1.5deg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Dan_Tinh_lute_from_Vietnam.jpg/300px-Dan_Tinh_lute_from_Vietnam.jpg" onerror="this.src='https://placehold.co/160x160/0f3d2e/f5d07a?text=Đàn+Tính'" alt="Đàn Tính"/><div class="polaroid-label">Đàn Tính tẩu</div></div>
+      <div class="polaroid" style="--rot:3deg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Pac_Ngoi_homestay.JPG/300px-Pac_Ngoi_homestay.JPG" onerror="this.src='https://placehold.co/160x160/0d2b2b/d4a843?text=Nhà+sàn'" alt="Nhà sàn Pắc Ngòi"/><div class="polaroid-label">Nhà sàn Pắc Ngòi</div></div>
+      <div class="polaroid" style="--rot:-2deg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pac_Ngoi_rice_field.JPG/300px-Pac_Ngoi_rice_field.JPG" onerror="this.src='https://placehold.co/160x160/0f3d2e/5dd4a8?text=Ruộng+lúa'" alt="Ruộng lúa"/><div class="polaroid-label">Ruộng lúa vùng Tày</div></div>
+    </div>
+    <div style="margin-top:2rem;text-align:center">
+      <a href="https://vanhoatinnguong.vn/bai-viet/tin-nguong-then-cua-nguoi-dan-toc-tay-nung-8297.html" class="src" target="_blank">Văn hoá tín ngưỡng</a>
+      <a href="https://sodantoctongiao.hanoi.gov.vn/articles/3380" class="src" target="_blank">Sở DT Hà Nội</a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. TRANG PHỤC -->
+<section id="costume" class="sp">
+  <div class="wave-top"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" class="wave-fill-dark"/></svg></div>
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag">Trang phục & Văn hóa vật chất</div>
+      <h2 class="stit">Bản Sắc Qua <em>Trang Phục & Kiến Trúc</em></h2>
+      <div class="gline"></div>
+    </div>
+    <div class="g2" style="margin-bottom:3rem">
+      <div class="rvl">
+        <div class="ci-box">
+          <h3>👗 Trang phục truyền thống</h3>
+          <div class="hl hld"><strong>Màu sắc:</strong> Đen, xanh đen, xanh lá, nâu — hòa quyện thiên nhiên núi rừng</div>
+          <div class="hl hld"><strong>Chất liệu:</strong> Lụa, bông, len tự nhiên. Tự dệt bằng thủ công từ nguyên liệu thiên nhiên</div>
+          <p style="color:rgba(255,255,255,.7);font-size:.87rem;margin:1rem 0 .5rem;font-weight:600">Nữ phục:</p>
+          <ul style="font-size:.84rem;color:rgba(255,255,255,.6);padding-left:1rem;line-height:1.9">
+            <li>Áo cánh trắng + áo dài 5 thân chàm thổ cẩm</li>
+            <li>Khăn "mỏ quạ" màu chàm</li>
+            <li>Vòng cổ bạc to bản (tượng trưng may mắn)</li>
+            <li>Vòng tay, vòng chân, xà tích, túi vải</li>
+          </ul>
+          <p style="color:rgba(255,255,255,.7);font-size:.87rem;margin:1rem 0 .5rem;font-weight:600">Nam phục:</p>
+          <ul style="font-size:.84rem;color:rgba(255,255,255,.6);padding-left:1rem;line-height:1.9">
+            <li>Áo ngắn 5 thân cổ đứng (ngày thường)</li>
+            <li>Áo dài xẻ nách cúc đồng (lễ hội)</li>
+            <li>Quần chàm đũng rộng, cạp lá tọa</li>
+            <li>Khăn chàm quấn lối chữ nhân</li>
+          </ul>
+          <div class="badge-row">
+            <span class="cb">Thổ cẩm hoa văn</span><span class="cb">Nhuộm chàm</span>
+            <span class="cb">Trang sức bạc</span><span class="cb">Dệt tay truyền thống</span>
+          </div>
+        </div>
+      </div>
+      <div class="rvr">
+        <div class="ci-box" style="background:linear-gradient(135deg,#0d2b2b,#0a2a1e)">
+          <h3>🏡 Nhà sàn truyền thống</h3>
+          <div class="hl hld"><strong>Kết cấu:</strong> 3 gian, 2 trái, 8 cột gỗ nghiến. Mái ngói âm dương. Lưng tựa núi, cửa ra đồng.</div>
+          <div class="hl hld"><strong>Cầu thang:</strong> Số bậc lẻ (thường 9 bậc) — theo quan niệm phong thủy may mắn.</div>
+          <p style="color:rgba(255,255,255,.7);font-size:.87rem;margin:1rem 0 .5rem;font-weight:600">Không gian sinh hoạt:</p>
+          <ul style="font-size:.84rem;color:rgba(255,255,255,.6);padding-left:1rem;line-height:1.9">
+            <li><strong style="color:var(--teal3)">Gầm sàn:</strong> Xưa chăn thả gia súc; nay nông cụ và vui chơi</li>
+            <li><strong style="color:var(--teal3)">Sàn chính:</strong> Bếp lửa trung tâm + bàn thờ tổ tiên gian giữa</li>
+            <li><strong style="color:var(--teal3)">Sàn nước:</strong> Rửa rau, vo gạo, tắm rửa</li>
+          </ul>
+          <div class="badge-row">
+            <span class="cb">Gỗ nghiến</span><span class="cb">Tre nứa</span>
+            <span class="cb">Lá cọ</span><span class="cb">Ngói âm dương</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- IMAGE TEXT ROWS -->
+    <div class="img-text-row">
+      <div class="img-frame">
+        <div class="img-tag">Trang phục</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Costume%2C_Tay%2C_Cao_Bang%2C_1962%2C_handmade_cotton%2C_indigo_-_Vietnamese_Women%27s_Museum_-_Hanoi%2C_Vietnam_-_DSC03864.JPG/400px-Costume%2C_Tay%2C_Cao_Bang%2C_1962%2C_handmade_cotton%2C_indigo_-_Vietnamese_Women%27s_Museum_-_Hanoi%2C_Vietnam_-_DSC03864.JPG" onerror="this.src='https://placehold.co/600x360/0d2b2b/f5d07a?text=Trang+phục+Tày'" alt="Trang phục truyền thống dân tộc Tày" style="height:360px"/>
+      </div>
+      <div>
+        <div class="stag" style="justify-content:flex-start">Trang phục</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--text);margin:.5rem 0 1rem">Áo Chàm — <span style="color:var(--teal)">Biểu Tượng Đẹp</span></h3>
+        <p style="color:var(--textm);line-height:1.85;margin-bottom:1rem">Màu chàm xanh đen trầm ấm là đặc trưng nổi bật nhất của trang phục Tày. Trang phục toát lên vẻ đẹp giản dị, thanh thoát và gắn bó sâu sắc với màu sắc thiên nhiên núi rừng.</p>
+        <div class="hl"><strong>Ý nghĩa màu chàm:</strong> Màu xanh đen tượng trưng cho đất trời, núi rừng — sự hòa hợp trọn vẹn giữa con người và thiên nhiên.</div>
+      </div>
+    </div>
+    <div class="img-text-row flip" style="margin-top:2.5rem">
+      <div class="img-frame">
+        <div class="img-tag">Kiến trúc</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Nh%C3%A0_ng%C6%B0%E1%BB%9Di_T%C3%A0y_%28%C4%90%E1%BB%8Bnh_H%C3%B3a_-_Th%C3%A1i_Nguy%C3%AAn%29.jpg/600px-Nh%C3%A0_ng%C6%B0%E1%BB%9Di_T%C3%A0y_%28%C4%90%E1%BB%8Bnh_H%C3%B3a_-_Th%C3%A1i_Nguy%C3%AAn%29.jpg" onerror="this.src='https://placehold.co/600x360/0d2b2b/5dd4a8?text=Nhà+sàn+Tày'" alt="Nhà sàn người Tày – Định Hóa, Thái Nguyên" style="height:360px"/>
+      </div>
+      <div>
+        <div class="stag" style="justify-content:flex-start">Kiến trúc</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--text);margin:.5rem 0 1rem">Nhà Sàn — <span style="color:var(--teal)">Trí Tuệ Kiến Trúc</span></h3>
+        <p style="color:var(--textm);line-height:1.85;margin-bottom:1rem">Nhà sàn không chỉ là nơi ở — đó là một kiệt tác kiến trúc dân gian. Toàn bộ vật liệu từ gỗ nghiến, tre nứa, lá cọ đến ngói âm dương đều lấy từ thiên nhiên địa phương.</p>
+        <div class="hl"><strong>Đặc điểm độc đáo:</strong> Cầu thang số bậc lẻ (9 bậc), sàn nước riêng biệt, bàn thờ tổ tiên đặt ở gian giữa trang trọng nhất.</div>
+      </div>
+    </div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--text);text-align:center;margin:3rem 0 2rem">🔧 Công cụ & Hiện vật đặc trưng</h3>
+    <div class="g2">
+      <div class="card rvl" data-detail-id="congcu"><div class="ci">⚒️</div><h3>Dụng cụ lao động sản xuất</h3><ul><li>Bộ quay tơ, thoi, dao chẻ, chuốt nan (dệt vải)</li><li>Gùi, dậu gánh, sọt, rá, rổ, nong, nia</li><li>Cày, bừa, che mồm trâu bò</li><li>Nơm úp, giỏ cá, lồng bẫy chim và thú rừng</li><li>Nỏ (coóng pân), súng kíp, các loại bẫy: kẹp, pằm, lẹo</li></ul></div>
+      <div class="card rvr" data-detail-id="dole"><div class="ci">🎭</div><h3>Đồ lễ & Tâm linh</h3><ul><li>Đàn tính (bầu khô + gỗ sa mộc)</li><li>Chùm xóc nhạc, quạt (cờ), thẻ âm dương, kiếm, chuông, ấn, còi</li><li>Con quay (gụ) bằng gỗ — trò chơi dân gian đặc sắc</li><li>Quả còn ghép vải màu đựng hạt giống — biểu tượng cầu mùa</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<div class="img-banner">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ba-Be-Lake-_Then-singing.jpg/1200px-Ba-Be-Lake-_Then-singing.jpg" onerror="this.src='https://placehold.co/1400x320/0a1628/d4a843?text=Dân+Tộc+Tày'" alt="Hát Then bên hồ Ba Bể"/>
+  <div class="banner-text">
+    <h2 class="grad-text">Kiểm Tra Kiến Thức</h2>
+    <p>Bạn đã sẵn sàng kiểm tra hiểu biết về Dân Tộc Tày chưa?</p>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<section id="quiz" class="sp qs">
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag" style="color:var(--gold2)">Mini Game</div>
+      <h2 class="stit" style="color:var(--gold2)">🎮 Quiz: Bạn Hiểu <em style="color:var(--teal3)">Dân Tộc Tày</em> Đến Đâu?</h2>
+      <div class="gline"></div>
+      <p class="sdesc" style="color:rgba(255,255,255,.6)">Trả lời 8 câu hỏi thú vị về văn hóa, lịch sử và phong tục của dân tộc Tày. Bạn có đạt điểm tối đa?</p>
+    </div>
+    <div class="qw">
+      <div class="qpb"><div class="qpf" id="qpf"></div></div>
+      <div class="qsd">
+        <span id="qcnt">Câu 1 / 8</span>
+        <span class="sc" id="qscore">🏆 0 điểm</span>
+      </div>
+      <div class="qbox" id="qbox">
+        <div id="qq" class="qq"></div>
+        <div id="qopts" class="qopts"></div>
+        <div id="qfb" class="qfb"></div>
+        <div class="qnxt"><button id="qnbtn" class="qnbtn" onclick="nextQ()">Câu tiếp theo →</button></div>
+      </div>
+      <div class="qend" id="qend">
+        <div class="bs" id="qfinal"></div>
+        <div class="rm" id="qmsg"></div>
+        <div class="rs" id="qsub"></div>
+        <button class="qretry" onclick="startQuiz()">🔄 Chơi lại</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. BẢO TỒN -->
+<section id="contemporary" class="sp">
+  <div class="wave-top"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,60 C300,0 900,0 1200,60 L1200,0 L0,0 Z" class="wave-fill-dark"/></svg></div>
+  <div class="con">
+    <div class="sh rv">
+      <div class="stag">Vấn đề đương đại</div>
+      <h2 class="stit">Bảo Tồn & <em>Phát Triển</em></h2>
+      <div class="gline"></div>
+    </div>
+    <div class="unes rv">
+      <div class="unes-st">✦ ✦ ✦ ✦ ✦</div>
+      <h3>🌐 UNESCO Vinh Danh Thực Hành Then</h3>
+      <p>Năm 2019, <strong>Thực hành Then của người Tày, Nùng, Thái ở Việt Nam</strong> được UNESCO ghi danh vào Danh sách Di sản văn hóa phi vật thể đại diện của nhân loại.</p>
+      <span class="unes-b">✦ Di sản phi vật thể nhân loại 2019 ✦</span>
+    </div>
+    <div class="cg">
+      <div class="ch prob rvl">
+        <h3>⚠️ Thách thức hiện tại</h3>
+        <ul>
+          <li>Kinh tế thị trường và giao thoa văn hóa mạnh mẽ</li>
+          <li>Tỷ lệ biết chữ Tày chỉ ~5%; người trẻ dùng tiếng Việt nhiều hơn</li>
+          <li>Nghệ nhân tài danh ngày càng hiếm; truyền dạy chủ yếu trong gia đình</li>
+          <li>Thế hệ trẻ thiếu quan tâm với di sản văn hóa</li>
+          <li>Nguy cơ đồng hóa khi di cư đô thị ngày càng tăng</li>
+        </ul>
+      </div>
+      <div class="ch sol rvr">
+        <h3>✅ Giải pháp & Hành động</h3>
+        <ul>
+          <li>Bảo tồn làng văn hóa truyền thống theo chính sách Nhà nước</li>
+          <li>Đưa dân ca Tày vào trường học và câu lạc bộ văn nghệ địa phương</li>
+          <li>Phát triển du lịch cộng đồng (homestay) bền vững gắn với văn hóa</li>
+          <li>Xã hội hóa công tác bảo tồn và phổ biến văn hóa dân tộc</li>
+          <li>Chương trình mục tiêu quốc gia hạ tầng và giảm nghèo vùng DTTS</li>
+        </ul>
+      </div>
+    </div>
+    <div class="g3" style="margin-top:2rem">
+      <div class="card rv d1" data-detail-id="lienhe"><div class="ci">🔗</div><h3>Mối liên hệ khu vực</h3><p>Người Tày có mối quan hệ ngôn ngữ và văn hóa với dân tộc Nùng (Việt Nam) và Choang (Trung Quốc), tạo thành vùng liên tục văn hóa Tai trải dài Đông Nam Á.</p><div class="tags" style="margin-top:.8rem"><span class="tag">Dân tộc Nùng</span><span class="tag">Dân tộc Choang</span><span class="tag g">Nhóm Tai–Kadai</span></div></div>
+      <div class="card rv d2" data-detail-id="chinhsach"><div class="ci">🏛️</div><h3>Chính sách nhà nước</h3><ul><li>Ủy ban Dân tộc phụ trách chính sách hội nhập</li><li>Ưu đãi giáo dục, y tế, hạ tầng vùng DTTS</li><li>Chương trình MTQG phát triển KT-XH vùng đồng bào DTTS</li><li>Hỗ trợ du lịch sinh thái và văn hóa cộng đồng</li></ul></div>
+      <div class="card rv d3" data-detail-id="xutich"><div class="ci">📈</div><h3>Xu hướng tích cực</h3><ul><li>Đời sống cải thiện qua Chương trình MTQG</li><li>Mô hình homestay phát triển mạnh</li><li>UNESCO công nhận Then → tăng nhận thức bảo tồn</li><li>Thế hệ trẻ bắt đầu tự hào và quan tâm hơn</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flogo">✦ Dân Tộc Tày ✦</div>
+  <p>Trang web giới thiệu về <strong style="color:var(--gold2)">Dân tộc Tày</strong> — Di sản văn hóa Việt Nam</p>
+  <p>Dữ liệu dân số: Tổng điều tra 53 DTTS năm 2019 · Tổng cục Thống kê Việt Nam</p>
+  <div class="fsrcs">
+    <a href="https://nhandan.vn/dan-toc-tay-post723931.html" class="src" target="_blank">Báo Nhân Dân</a>
+    <a href="https://vi.wikipedia.org/wiki/Ng%C6%B0%E1%BB%9Di_T%C3%A0y" class="src" target="_blank">Wikipedia</a>
+    <a href="https://sodantoctongiao.hanoi.gov.vn/articles/3380" class="src" target="_blank">Sở DT Hà Nội</a>
+    <a href="http://www.cema.gov.vn/gioi-thieu/cong-dong-54-dan-toc/nguoi-tay.htm" class="src" target="_blank">Ủy ban Dân tộc</a>
+    <a href="https://vanhoatinnguong.vn/bai-viet/tin-nguong-then-cua-nguoi-dan-toc-tay-nung-8297.html" class="src" target="_blank">Văn hoá tín ngưỡng</a>
+    <a href="https://tuyenquang.dcs.vn/DetailView/145545/40/Nghe-thu-cong-truyen-thong-cua-nguoi-Tay-o-Tuyen-Quang.html" class="src" target="_blank">Tuyên Quang</a>
+    <a href="https://bdttg.gov.vn/gioi-thieu/cong-dong-54-dan-toc/nguoi-tay.htm" class="src" target="_blank">Ban Dân tộc TW</a>
+    <a href="https://en.wikipedia.org/wiki/T%C3%A0y_language" class="src" target="_blank">Tày Language</a>
+  </div>
+  <p style="font-size:.72rem;opacity:.3;margin-top:1rem">© 2026 · Xây dựng vì mục đích giáo dục và bảo tồn văn hóa dân tộc</p>
+</footer>
+
+<!-- DETAIL MODAL -->
+<div id="detail-modal" class="dm-overlay" role="dialog" aria-modal="true" aria-label="Chi tiết">
+  <div class="dm-panel">
+    <button class="dm-close" aria-label="Đóng">&times;</button>
+    <div class="dm-gallery" id="dm-gallery"></div>
+    <div class="dm-body">
+      <h2 class="dm-title" id="dm-title"></h2>
+      <div class="dm-text" id="dm-text"></div>
+      <div class="dm-sources" id="dm-sources"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<a href="#hero" id="btt">↑</a>
+
+<script src="main.js"></script>
+</body>
+</html>
