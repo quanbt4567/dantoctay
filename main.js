@@ -36,7 +36,7 @@
       curT.style.top = ty + 'px';
       requestAnimationFrame(animTrail);
     })();
-    document.querySelectorAll('a,button,.card,.fc,.rc,.polaroid,.gs-item,.mosaic-item').forEach(function (el) {
+    document.querySelectorAll('a,button,.card,.fc,.rc,.polaroid,.gs-item,.mosaic-item,.celeb-card,.celeb-featured').forEach(function (el) {
       el.addEventListener('mouseenter', function () {
         cur.style.transform = 'translate(-50%,-50%) scale(2.5)';
         curT.style.transform = 'translate(-50%,-50%) scale(1.5)';
@@ -500,7 +500,7 @@
   });
 
   /* ===== 19. CARD GLOW FOLLOW ===== */
-  document.querySelectorAll('.card,.fc,.rc').forEach(function (card) {
+  document.querySelectorAll('.card,.fc,.rc,.celeb-card,.celeb-featured').forEach(function (card) {
     card.addEventListener('mousemove', function (e) {
       var rect = card.getBoundingClientRect();
       card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
@@ -943,6 +943,228 @@
       sources: [
         { label: 'Báo Nhân Dân', url: 'https://nhandan.vn/dan-toc-tay-post723931.html' },
         { label: 'UNESCO ICH', url: 'https://ich.unesco.org/en/RL/practices-related-to-the-then-of-tay-nung-and-thai-people-01570' }
+      ]
+    },
+
+    /* === 9. NHÂN VẬT NỔI TIẾNG === */
+    domixi: {
+      title: 'Độ Mixi (Phùng Thanh Độ) – Streamer #1 Việt Nam',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/%C4%90%E1%BB%99_Mixi_2023.jpg/500px-%C4%90%E1%BB%99_Mixi_2023.jpg'
+      ],
+      text: '<p><strong>Phùng Thanh Độ</strong> (sinh ngày 2 tháng 2 năm 1989), được biết đến với biệt danh <strong style="color:var(--gold2)">Độ Mixi</strong> hay "Tộc trưởng", là streamer và YouTuber nổi tiếng nhất Việt Nam.</p>' +
+        '<p><strong>Tiểu sử & Xuất thân:</strong></p>' +
+        '<ul><li>Sinh năm 1989 tại <strong>Cao Bằng</strong> — một trong những tỉnh có người Tày đông nhất cả nước</li>' +
+        '<li>Là người dân tộc Tày chính gốc, lớn lên giữa núi rừng Đông Bắc</li>' +
+        '<li>Tốt nghiệp đại học tại Hà Nội, từng làm nhiều công việc trước khi trở thành streamer</li>' +
+        '<li>Bắt đầu sự nghiệp streaming vào khoảng 2017–2018 trên nền tảng Facebook Gaming</li></ul>' +
+        '<p><strong>Sự nghiệp & Thành tựu:</strong></p>' +
+        '<ul><li>Kênh YouTube <strong>MixiGaming</strong> đạt hơn <strong>7 triệu subscriber</strong></li>' +
+        '<li>Là streamer có lượng theo dõi và tương tác lớn nhất Việt Nam</li>' +
+        '<li>Nổi tiếng qua game PUBG, sau mở rộng sang Minecraft, GTA V, và nhiều game khác</li>' +
+        '<li>Phong cách hài hước, chân thật, gần gũi — tạo nên cộng đồng fan "Tộc" cực kỳ trung thành</li>' +
+        '<li>Tổ chức nhiều sự kiện từ thiện, quyên góp cho đồng bào vùng cao, miền Trung</li>' +
+        '<li>Được mời tham gia nhiều chương trình truyền hình, sự kiện gaming quốc tế</li></ul>' +
+        '<p><strong>Niềm tự hào dân tộc Tày:</strong></p>' +
+        '<p>Độ Mixi luôn công khai và tự hào về nguồn gốc dân tộc Tày từ Cao Bằng. Anh thường xuyên chia sẻ về quê hương, phong cảnh núi rừng, ẩm thực Tày và những kỷ niệm tuổi thơ trên vùng cao. Sự thành công vang dội của "Tộc trưởng" đã truyền cảm hứng cho rất nhiều bạn trẻ dân tộc thiểu số tin rằng họ có thể tỏa sáng trong bất kỳ lĩnh vực nào — kể cả những lĩnh vực hoàn toàn mới như esports và sáng tạo nội dung số.</p>' +
+        '<p>Biệt danh "Tộc trưởng" không chỉ là tên gọi trong gaming — nó còn mang ý nghĩa sâu sắc về vai trò kết nối cộng đồng, giống như vai trò trưởng bản trong văn hóa Tày truyền thống.</p>',
+      sources: [
+        { label: 'Wikipedia – Độ Mixi', url: 'https://vi.wikipedia.org/wiki/%C4%90%E1%BB%99_Mixi' },
+        { label: 'YouTube – MixiGaming', url: 'https://www.youtube.com/@MixiGaming' },
+        { label: 'Facebook – Độ Mixi', url: 'https://www.facebook.com/domixiofficial' }
+      ]
+    },
+    nongducmanh: {
+      title: 'Nông Đức Mạnh – Tổng Bí thư Đảng CSVN',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Nong_Duc_Manh_2010.jpg/400px-Nong_Duc_Manh_2010.jpg'
+      ],
+      text: '<p><strong>Nông Đức Mạnh</strong> (sinh ngày 11 tháng 9 năm 1940) là nhà lãnh đạo cấp cao nhất Việt Nam có gốc dân tộc Tày.</p>' +
+        '<p><strong>Tiểu sử:</strong></p>' +
+        '<ul><li>Sinh tại xã Cường Lợi, huyện Na Rì, tỉnh <strong>Bắc Kạn</strong> — trung tâm vùng Tày</li>' +
+        '<li>Xuất thân từ gia đình nông dân dân tộc Tày</li>' +
+        '<li>Tốt nghiệp kỹ sư Lâm nghiệp tại Liên Xô (1963)</li>' +
+        '<li>Bắt đầu sự nghiệp trong ngành lâm nghiệp tại Bắc Kạn</li></ul>' +
+        '<p><strong>Sự nghiệp chính trị:</strong></p>' +
+        '<ul><li>Bí thư Tỉnh ủy Bắc Thái (1989–1991)</li>' +
+        '<li><strong>Chủ tịch Quốc hội</strong> nước CHXHCN Việt Nam (1992–2001)</li>' +
+        '<li><strong>Tổng Bí thư Đảng Cộng sản Việt Nam</strong> (2001–2011) — 2 nhiệm kỳ</li>' +
+        '<li>Là người dân tộc thiểu số duy nhất từng giữ chức vụ cao nhất trong Đảng</li></ul>' +
+        '<p><strong>Di sản:</strong></p>' +
+        '<p>Dưới thời Nông Đức Mạnh, Việt Nam đạt nhiều thành tựu phát triển kinh tế, hội nhập quốc tế (gia nhập WTO năm 2007). Ông là minh chứng sống cho chính sách đoàn kết dân tộc của Việt Nam — một người con dân tộc Tày vươn lên vị trí lãnh đạo cao nhất đất nước.</p>',
+      sources: [
+        { label: 'Wikipedia – Nông Đức Mạnh', url: 'https://vi.wikipedia.org/wiki/N%C3%B4ng_%C4%90%E1%BB%A9c_M%E1%BA%A1nh' },
+        { label: 'Chính phủ VN', url: 'https://www.chinhphu.vn/' }
+      ]
+    },
+    hoangvanthu: {
+      title: 'Hoàng Văn Thụ – Nhà cách mạng kiên trung',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/vi/thumb/a/a3/Hoang_Van_Thu.jpg/400px-Hoang_Van_Thu.jpg'
+      ],
+      text: '<p><strong>Hoàng Văn Thụ</strong> (1909–1944) là một trong những nhà cách mạng tiêu biểu nhất của dân tộc Tày và của cả dân tộc Việt Nam.</p>' +
+        '<p><strong>Tiểu sử:</strong></p>' +
+        '<ul><li>Tên thật: Hoàng Văn Thụ</li>' +
+        '<li>Sinh năm 1909 tại Nhân Lý, Văn Lãng (nay thuộc Văn Quan), tỉnh <strong>Lạng Sơn</strong></li>' +
+        '<li>Gia đình nông dân dân tộc Tày, có truyền thống yêu nước</li>' +
+        '<li>Giác ngộ cách mạng từ sớm, hoạt động từ năm 16 tuổi</li></ul>' +
+        '<p><strong>Sự nghiệp cách mạng:</strong></p>' +
+        '<ul><li>Tham gia phong trào cách mạng từ năm 1926</li>' +
+        '<li>Được kết nạp Đảng Cộng sản Đông Dương năm 1930</li>' +
+        '<li>Hoạt động bí mật tại Lạng Sơn, Cao Bằng, Trung Quốc</li>' +
+        '<li>Được bầu làm <strong>Bí thư Xứ ủy Bắc Kỳ</strong> — chức vụ lãnh đạo cao nhất miền Bắc</li>' +
+        '<li>Ủy viên Ban Thường vụ Trung ương Đảng</li></ul>' +
+        '<p><strong>Hy sinh anh dũng:</strong></p>' +
+        '<p>Ngày 25/12/1943, Hoàng Văn Thụ bị thực dân Pháp bắt tại Hà Nội. Dù bị tra tấn dã man, ông không khai báo bất cứ điều gì. Ngày <strong>24/5/1944</strong>, ông bị xử bắn tại trường bắn Tương Mai, Hà Nội. Trước pháp trường, ông hát vang bài Quốc tế ca và hiên ngang đối mặt cái chết. Tên ông được đặt cho nhiều đường phố, trường học trên cả nước.</p>',
+      sources: [
+        { label: 'Wikipedia – Hoàng Văn Thụ', url: 'https://vi.wikipedia.org/wiki/Ho%C3%A0ng_V%C4%83n_Th%E1%BB%A5' },
+        { label: 'Báo Nhân Dân', url: 'https://nhandan.vn/' }
+      ]
+    },
+    chuvantan: {
+      title: 'Chu Văn Tấn – Thượng tướng dân tộc Tày',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/vi/thumb/6/6a/Chu_Van_Tan.jpg/400px-Chu_Van_Tan.jpg'
+      ],
+      text: '<p><strong>Chu Văn Tấn</strong> (1909–1984) là vị tướng người Tày nổi tiếng, một trong những người chỉ huy đầu tiên của lực lượng vũ trang cách mạng Việt Nam.</p>' +
+        '<p><strong>Tiểu sử:</strong></p>' +
+        '<ul><li>Sinh năm 1909 tại Phú Thượng, Võ Nhai (nay thuộc Phú Lương), tỉnh <strong>Thái Nguyên</strong></li>' +
+        '<li>Gia đình nông dân dân tộc Tày</li>' +
+        '<li>Tham gia cách mạng từ rất sớm, hoạt động tại vùng Việt Bắc</li></ul>' +
+        '<p><strong>Sự nghiệp quân sự:</strong></p>' +
+        '<ul><li>Chỉ huy <strong>Cứu quốc quân</strong> — lực lượng vũ trang tiền thân của Quân đội Nhân dân Việt Nam</li>' +
+        '<li>Tham gia lãnh đạo khởi nghĩa Bắc Sơn (1940) — một trong những cuộc khởi nghĩa đầu tiên chống thực dân</li>' +
+        '<li>Bộ trưởng Bộ Quốc phòng trong Chính phủ Lâm thời (1945)</li>' +
+        '<li>Được phong <strong>Thượng tướng</strong> Quân đội Nhân dân Việt Nam</li>' +
+        '<li>Phó Chủ tịch Quốc hội nước Việt Nam DCCH</li></ul>' +
+        '<p><strong>Di sản:</strong></p>' +
+        '<p>Chu Văn Tấn là biểu tượng của sự đóng góp to lớn của dân tộc Tày trong sự nghiệp giải phóng dân tộc. Ông chứng minh rằng từ vùng núi Việt Bắc, con em đồng bào dân tộc thiểu số hoàn toàn có thể trở thành những vị tướng tài ba của đất nước.</p>',
+      sources: [
+        { label: 'Wikipedia – Chu Văn Tấn', url: 'https://vi.wikipedia.org/wiki/Chu_V%C4%83n_T%E1%BA%A5n' },
+        { label: 'Bách khoa Quân sự VN', url: 'https://vi.wikipedia.org/wiki/Chu_V%C4%83n_T%E1%BA%A5n' }
+      ]
+    },
+    bevandan: {
+      title: 'Bế Văn Đàn – Anh hùng lực lượng vũ trang',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/vi/thumb/a/ad/Be_Van_Dan.jpg/400px-Be_Van_Dan.jpg'
+      ],
+      text: '<p><strong>Bế Văn Đàn</strong> (1931–1953) là Anh hùng Lực lượng Vũ trang Nhân dân Việt Nam, biểu tượng bất tử của chủ nghĩa anh hùng cách mạng.</p>' +
+        '<p><strong>Tiểu sử:</strong></p>' +
+        '<ul><li>Sinh năm 1931 tại xã Quang Trung (nay thuộc xã Triệu Ẩu), huyện Phục Hòa, tỉnh <strong>Cao Bằng</strong></li>' +
+        '<li>Gia đình nông dân dân tộc Tày nghèo</li>' +
+        '<li>Mồ côi cha từ nhỏ, sống với mẹ trong hoàn cảnh khó khăn</li>' +
+        '<li>Nhập ngũ năm 1948, khi mới 17 tuổi</li></ul>' +
+        '<p><strong>Chiến công bất tử:</strong></p>' +
+        '<p>Ngày <strong>12/12/1953</strong>, trong trận đánh tại <strong>Mường Pồn</strong> (Điện Biên), khi đơn vị cần bắn yểm trợ mà không có giá súng, Bế Văn Đàn đã <strong>lấy vai mình làm giá đỡ</strong> cho đồng đội kê súng trung liên bắn. Dù bị thương nặng và trúng nhiều phát đạn, anh vẫn kiên cường ôm chặt súng cho đến khi hy sinh.</p>' +
+        '<p><strong>Vinh danh:</strong></p>' +
+        '<ul><li>Truy tặng danh hiệu <strong>Anh hùng Lực lượng Vũ trang Nhân dân</strong> (1955)</li>' +
+        '<li>Tên anh được đặt cho nhiều đường phố, trường học trên cả nước</li>' +
+        '<li>Là một trong ba anh hùng tiêu biểu nhất thời kỳ kháng chiến chống Pháp (cùng Phan Đình Giót, Tô Vĩnh Diện)</li>' +
+        '<li>Câu chuyện anh hùng "lấy thân mình làm giá súng" được đưa vào sách giáo khoa</li></ul>',
+      sources: [
+        { label: 'Wikipedia – Bế Văn Đàn', url: 'https://vi.wikipedia.org/wiki/B%E1%BA%BF_V%C4%83n_%C4%90%C3%A0n' },
+        { label: 'Báo QĐND', url: 'https://www.qdnd.vn/' }
+      ]
+    },
+    hoangdinhgiong: {
+      title: 'Hoàng Đình Giong – Thiếu tướng, Anh hùng LLVT',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/vi/0/04/Hoang_Dinh_Giong.jpg'
+      ],
+      text: '<p><strong>Hoàng Đình Giong</strong> (1904–1947) là Thiếu tướng Quân đội Nhân dân Việt Nam, Anh hùng Lực lượng Vũ trang Nhân dân, một trong những nhà cách mạng tiên phong tại Cao Bằng.</p>' +
+        '<p><strong>Tiểu sử:</strong></p>' +
+        '<ul><li>Tên thật: Hoàng Đình Giong, bí danh: Văn, Hồng Kỳ, Lê Minh</li>' +
+        '<li>Sinh ngày 1/6/1904 tại xã Hạ Hoàng, huyện Hòa An, tỉnh <strong>Cao Bằng</strong></li>' +
+        '<li>Gia đình nhà nho dân tộc Tày có truyền thống yêu nước</li></ul>' +
+        '<p><strong>Sự nghiệp cách mạng:</strong></p>' +
+        '<ul><li>Sang Quảng Châu (TQ) gặp Nguyễn Ái Quốc, gia nhập Hội Việt Nam Cách mạng Thanh niên (1926)</li>' +
+        '<li>Một trong những <strong>người sáng lập Chi bộ Đảng đầu tiên</strong> tại Cao Bằng (1930)</li>' +
+        '<li>Hoạt động bí mật ở nhiều nước Đông Nam Á</li>' +
+        '<li>Chỉ huy lực lượng vũ trang kháng chiến tại chiến trường <strong>biên giới Đông Bắc</strong></li>' +
+        '<li>Được phong Thiếu tướng (1948, truy phong)</li></ul>' +
+        '<p><strong>Hy sinh:</strong></p>' +
+        '<p>Hoàng Đình Giong hy sinh ngày 28/3/1947 trong khi chỉ huy chiến đấu bảo vệ biên giới. Ông được truy tặng danh hiệu <strong>Anh hùng LLVT Nhân dân</strong> năm 2010. Cuộc đời ông là tấm gương sáng về lòng yêu nước và sự kiên trung cách mạng của dân tộc Tày.</p>',
+      sources: [
+        { label: 'Wikipedia – Hoàng Đình Giong', url: 'https://vi.wikipedia.org/wiki/Ho%C3%A0ng_%C4%90%C3%ACnh_Giong' },
+        { label: 'Cao Bằng Gov', url: 'https://www.caobang.gov.vn/' }
+      ]
+    },
+    nongquocchan: {
+      title: 'Nông Quốc Chấn – Nhà thơ dân tộc Tày, Giải thưởng HCM',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/vi/thumb/9/9f/Nong_Quoc_Chan.jpg/400px-Nong_Quoc_Chan.jpg'
+      ],
+      text: '<p><strong>Nông Quốc Chấn</strong> (1923–2002) là nhà thơ tiêu biểu nhất và có ảnh hưởng lớn nhất của văn học dân tộc Tày.</p>' +
+        '<p><strong>Tiểu sử:</strong></p>' +
+        '<ul><li>Tên thật: Nông Văn Quỳnh, bút danh: Nông Quốc Chấn</li>' +
+        '<li>Sinh năm 1923 tại xã Bằng Đức (nay thuộc Cốc Đán), huyện Ngân Sơn, tỉnh <strong>Bắc Kạn</strong></li>' +
+        '<li>Gia đình nông dân dân tộc Tày</li>' +
+        '<li>Tham gia cách mạng từ sớm, hoạt động văn nghệ phục vụ kháng chiến</li></ul>' +
+        '<p><strong>Sự nghiệp văn học:</strong></p>' +
+        '<ul><li>Là nhà thơ <strong>đầu tiên viết thơ bằng tiếng Tày</strong> và được công nhận rộng rãi</li>' +
+        '<li>Tác phẩm nổi tiếng nhất: bài thơ <strong>"Dọn về làng"</strong> (1950) — viết về niềm vui giải phóng quê hương</li>' +
+        '<li>Các tác phẩm khác: "Tiếng ca người Việt Bắc", "Suối và biển", "Bộ đội ông Cụ"</li>' +
+        '<li>Thơ ông kết hợp hài hòa giữa chất dân ca Tày và thơ ca Việt Nam hiện đại</li></ul>' +
+        '<p><strong>Giải thưởng & Chức vụ:</strong></p>' +
+        '<ul><li><strong>Giải thưởng Hồ Chí Minh</strong> về Văn học Nghệ thuật (đợt I, 1996)</li>' +
+        '<li>Thứ trưởng Bộ Văn hóa – Thông tin</li>' +
+        '<li>Ủy viên Ủy ban Trung ương Mặt trận Tổ quốc Việt Nam</li>' +
+        '<li>Tổng Biên tập Tạp chí Văn hóa các dân tộc</li></ul>' +
+        '<p>Nông Quốc Chấn là người đã đưa tiếng thơ dân tộc Tày lên bản đồ văn học Việt Nam, chứng minh rằng ngôn ngữ và văn hóa Tày có sức sáng tạo vô cùng phong phú.</p>',
+      sources: [
+        { label: 'Wikipedia – Nông Quốc Chấn', url: 'https://vi.wikipedia.org/wiki/N%C3%B4ng_Qu%E1%BB%91c_Ch%E1%BA%A5n' },
+        { label: 'Hội Nhà Văn VN', url: 'https://vanvn.vn/' }
+      ]
+    },
+    duongthuan: {
+      title: 'Dương Thuấn – Nhà thơ, nhà văn Tày đương đại',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Tay_Women.jpg/400px-Tay_Women.jpg'
+      ],
+      text: '<p><strong>Dương Thuấn</strong> (sinh năm 1961) là nhà thơ, nhà văn đương đại tiêu biểu nhất của dân tộc Tày, người đưa văn hóa Tày vào dòng chảy văn học Việt Nam hiện đại.</p>' +
+        '<p><strong>Tiểu sử:</strong></p>' +
+        '<ul><li>Sinh năm 1961 tại xã Bằng Vân (nay là Lương Bằng), huyện Bạch Thông (nay thuộc Chợ Đồn), tỉnh <strong>Bắc Kạn</strong></li>' +
+        '<li>Lớn lên trong gia đình nông dân dân tộc Tày</li>' +
+        '<li>Tốt nghiệp Đại học Tổng hợp Hà Nội (nay là ĐHQG Hà Nội)</li>' +
+        '<li>Hội viên Hội Nhà văn Việt Nam</li></ul>' +
+        '<p><strong>Sự nghiệp văn học:</strong></p>' +
+        '<ul><li>Tác giả gần <strong>20 tập thơ</strong> bằng cả tiếng Tày và tiếng Việt</li>' +
+        '<li>Là nhà thơ Tày đương đại sung sức và đa dạng nhất</li>' +
+        '<li>Tác phẩm tiêu biểu: "Thơ Dương Thuấn", "Đàn then", "Hoa lê trắng"</li>' +
+        '<li>Viết nhiều về thiên nhiên, con người, phong tục tập quán vùng Tày</li>' +
+        '<li>Nghiên cứu, sưu tầm và phổ biến văn học dân gian Tày</li></ul>' +
+        '<p><strong>Đóng góp:</strong></p>' +
+        '<p>Dương Thuấn là cầu nối quan trọng giữa văn hóa Tày truyền thống và văn học Việt Nam đương đại. Thơ ông mang hơi thở núi rừng, tiếng đàn tính, và tâm hồn người Tày — giúp bạn đọc cả nước cảm nhận vẻ đẹp phong phú của văn hóa Đông Bắc.</p>',
+      sources: [
+        { label: 'Hội Nhà Văn VN', url: 'https://vanvn.vn/' },
+        { label: 'Wikipedia – Dương Thuấn', url: 'https://vi.wikipedia.org/wiki/D%C6%B0%C6%A1ng_Thu%E1%BA%A5n' }
+      ]
+    },
+    vihong: {
+      title: 'Vi Hồng – Nhà văn tiêu biểu viết bằng tiếng Tày',
+      images: [
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Ba-Be-Lake-_Then-singing.jpg/400px-Ba-Be-Lake-_Then-singing.jpg'
+      ],
+      text: '<p><strong>Vi Hồng</strong> (1936–1997) là nhà văn dân tộc Tày tiêu biểu, người có công lớn trong việc phát triển văn học viết bằng tiếng Tày và tiếng Việt.</p>' +
+        '<p><strong>Tiểu sử:</strong></p>' +
+        '<ul><li>Tên thật: Vi Văn Hồng</li>' +
+        '<li>Sinh năm 1936 tại xã Bản Thi, huyện Chợ Đồn, tỉnh <strong>Bắc Kạn</strong></li>' +
+        '<li>Gia đình nông dân dân tộc Tày</li>' +
+        '<li>Tốt nghiệp Đại học Sư phạm, trở thành giảng viên Trường Đại học Sư phạm Việt Bắc (nay là ĐH Sư phạm Thái Nguyên)</li></ul>' +
+        '<p><strong>Sự nghiệp văn học:</strong></p>' +
+        '<ul><li>Là <strong>nhà văn Tày đầu tiên</strong> viết tiểu thuyết bằng cả tiếng Tày và tiếng Việt</li>' +
+        '<li>Tác phẩm tiêu biểu: <strong>"Đất bằng"</strong>, <strong>"Vào hang"</strong>, "Gã ngợm", "Tháng năm biết nói", "Người trong ống"</li>' +
+        '<li>Chủ đề chính: cuộc sống, tình yêu và số phận con người Tày trước biến đổi xã hội</li>' +
+        '<li>Văn phong đậm chất dân gian Tày, hài hước, sâu sắc</li></ul>' +
+        '<p><strong>Đóng góp cho giáo dục:</strong></p>' +
+        '<ul><li>Giảng dạy văn học tại ĐH Sư phạm Việt Bắc suốt nhiều thập kỷ</li>' +
+        '<li>Đào tạo nhiều thế hệ giáo viên, nhà văn dân tộc thiểu số</li>' +
+        '<li>Nghiên cứu, sưu tầm văn học dân gian Tày một cách có hệ thống</li></ul>' +
+        '<p>Vi Hồng là tấm gương sáng về sự kết hợp giữa sáng tác văn học và giáo dục — đưa ngôn ngữ và văn hóa Tày vào giảng đường đại học.</p>',
+      sources: [
+        { label: 'Wikipedia – Vi Hồng', url: 'https://vi.wikipedia.org/wiki/Vi_H%E1%BB%93ng' },
+        { label: 'ĐH Sư phạm Thái Nguyên', url: 'https://www.tnue.edu.vn/' }
       ]
     }
   };

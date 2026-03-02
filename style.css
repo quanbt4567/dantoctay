@@ -451,6 +451,40 @@ footer p{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.9}
   .dm-title{font-size:1.4rem}
 }
 
+/* ===== CELEBRITY SECTION ===== */
+.celeb-featured{display:grid;grid-template-columns:1fr 1.2fr;gap:0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--r24);overflow:hidden;cursor:pointer;transition:var(--tr);position:relative}
+.celeb-featured:hover{background:rgba(255,255,255,.07);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.celeb-featured-img{position:relative;overflow:hidden;min-height:420px}
+.celeb-featured-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.celeb-featured:hover .celeb-featured-img img{transform:scale(1.05)}
+.celeb-featured-badge{position:absolute;top:1rem;left:1rem;background:linear-gradient(135deg,var(--gold),#e8b84b);color:var(--c1);font-size:.72rem;font-weight:700;padding:.4rem 1rem;border-radius:var(--r99);box-shadow:0 4px 15px rgba(212,168,67,.4)}
+.celeb-featured-info{padding:2.5rem;display:flex;flex-direction:column;justify-content:center}
+.celeb-cat{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal3);margin-bottom:.8rem}
+.celeb-featured-info h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold2);margin-bottom:1rem;line-height:1.2}
+.celeb-meta{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.2rem}
+.celeb-meta span{font-size:.78rem;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:.3rem}
+.celeb-featured-info p{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.85;margin-bottom:.8rem}
+.celeb-highlights{display:flex;gap:1rem;margin:1.5rem 0}
+.celeb-hl{text-align:center;padding:.8rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r8);flex:1}
+.celeb-hl strong{display:block;font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold2);line-height:1;margin-bottom:.3rem}
+.celeb-hl span{font-size:.68rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em}
+.celeb-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.celeb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.celeb-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--r24);overflow:hidden;transition:var(--tr);cursor:pointer;position:relative}
+.celeb-card:hover{background:rgba(255,255,255,.07);transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,0,0,.3);border-color:rgba(212,168,67,.2)}
+.celeb-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal3));transform:scaleX(0);transition:var(--tr);transform-origin:left;z-index:2}
+.celeb-card:hover::before{transform:scaleX(1)}
+.celeb-photo{position:relative;height:220px;overflow:hidden}
+.celeb-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.celeb-card:hover .celeb-photo img{transform:scale(1.08)}
+.celeb-cat-badge{position:absolute;top:.8rem;right:.8rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:var(--r99);color:white;z-index:1}
+.celeb-body{padding:1.5rem}
+.celeb-body h4{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--gold2);margin-bottom:.3rem}
+.celeb-years{font-size:.75rem;color:rgba(255,255,255,.45);margin-bottom:.5rem;font-weight:600}
+.celeb-role{font-size:.78rem;color:var(--teal3);font-weight:600;margin-bottom:.8rem;padding:.3rem .8rem;background:rgba(26,122,94,.15);border-radius:var(--r99);display:inline-block}
+.celeb-body p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:.8rem}
+.celeb-loc{font-size:.72rem;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:.3rem}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:900px){
   nav{padding:.8rem 1.5rem}
@@ -466,6 +500,11 @@ footer p{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.9}
   .img-text-row{grid-template-columns:1fr}
   .img-text-row.flip{direction:ltr}
   .parallax-img{height:280px}
+  .celeb-featured{grid-template-columns:1fr}
+  .celeb-featured-img{min-height:280px}
+  .celeb-featured-info{padding:2rem}
+  .celeb-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .celeb-highlights{flex-wrap:wrap}
 }
 @media(max-width:600px){
   .h-title{font-size:3rem}
@@ -474,4 +513,7 @@ footer p{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.9}
   .photo-mosaic{grid-template-columns:1fr}
   .polaroid{width:145px}
   .counter-grid{grid-template-columns:1fr 1fr}
+  .celeb-grid{grid-template-columns:1fr}
+  .celeb-featured-info h3{font-size:1.6rem}
+  .celeb-highlights .celeb-hl{flex:1 1 40%}
 }
