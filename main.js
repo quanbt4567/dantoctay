@@ -1258,4 +1258,420 @@
     });
   });
 
+  /* ===== TEAM SECTION – MEGA EFFECTS ===== */
+  (function initTeamEffects() {
+    var teamSection = document.getElementById('team');
+    if (!teamSection) return;
+
+    var teamCards = teamSection.querySelectorAll('.team-card');
+    var teamMembers = teamSection.querySelectorAll('.team-member');
+    var teamTitle = teamSection.querySelector('.team-title');
+    var teamBadge = teamSection.querySelector('.team-badge');
+    var teamCanvas = document.getElementById('teamCanvas');
+
+    /* --- 1. TEAM CANVAS: Constellation particles + shooting stars --- */
+    if (teamCanvas) {
+      var tCtx = teamCanvas.getContext('2d');
+      var tW, tH, tParticles = [], tStars = [], tMouse = { x: -999, y: -999 };
+
+      function tResize() {
+        var rect = teamSection.getBoundingClientRect();
+        tW = teamCanvas.width = rect.width;
+        tH = teamCanvas.height = rect.height;
+      }
+      tResize();
+      window.addEventListener('resize', tResize);
+
+      // Particles
+      function TParticle() { this.init(); }
+      TParticle.prototype.init = function () {
+        this.x = Math.random() * tW;
+        this.y = Math.random() * tH;
+        this.r = Math.random() * 2.5 + 0.5;
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.alpha = Math.random() * 0.5 + 0.2;
+        this.pulseSpeed = Math.random() * 0.02 + 0.01;
+        this.pulsePhase = Math.random() * Math.PI * 2;
+        this.color = ['212,168,67', '245,208,122', '26,122,94', '93,212,168', '255,241,198'][Math.floor(Math.random() * 5)];
+      };
+      TParticle.prototype.update = function (t) {
+        // Mouse repel
+        var dx = this.x - tMouse.x, dy = this.y - tMouse.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150 && dist > 0) {
+          var force = (150 - dist) / 150 * 0.8;
+          this.vx += (dx / dist) * force;
+          this.vy += (dy / dist) * force;
+        }
+        this.vx *= 0.98; this.vy *= 0.98;
+        this.x += this.vx; this.y += this.vy;
+        this.alpha = (Math.sin(t * this.pulseSpeed + this.pulsePhase) + 1) / 2 * 0.5 + 0.15;
+        if (this.x < -10) this.x = tW + 10;
+        if (this.x > tW + 10) this.x = -10;
+        if (this.y < -10) this.y = tH + 10;
+        if (this.y > tH + 10) this.y = -10;
+      };
+      TParticle.prototype.draw = function () {
+        tCtx.beginPath();
+        tCtx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        tCtx.fillStyle = 'rgba(' + this.color + ',' + this.alpha + ')';
+        tCtx.fill();
+        // Glow
+        tCtx.beginPath();
+        tCtx.arc(this.x, this.y, this.r * 3, 0, Math.PI * 2);
+        tCtx.fillStyle = 'rgba(' + this.color + ',' + (this.alpha * 0.15) + ')';
+        tCtx.fill();
+      };
+
+      for (var i = 0; i < 180; i++) tParticles.push(new TParticle());
+
+      // Shooting stars
+      function ShootingStar() { this.reset(); }
+      ShootingStar.prototype.reset = function () {
+        this.x = Math.random() * tW;
+        this.y = Math.random() * tH * 0.4;
+        this.len = Math.random() * 80 + 40;
+        this.speed = Math.random() * 8 + 4;
+        this.angle = Math.PI / 4 + (Math.random() - 0.5) * 0.3;
+        this.alpha = 0;
+        this.phase = 0; // 0=wait 1=active 2=fade
+        this.wait = Math.random() * 400 + 100;
+        this.life = 0;
+      };
+      ShootingStar.prototype.update = function () {
+        if (this.phase === 0) {
+          this.wait--;
+          if (this.wait <= 0) { this.phase = 1; this.alpha = 1; }
+        } else if (this.phase === 1) {
+          this.x += Math.cos(this.angle) * this.speed;
+          this.y += Math.sin(this.angle) * this.speed;
+          this.life++;
+          this.alpha = Math.max(0, 1 - this.life / 40);
+          if (this.alpha <= 0 || this.x > tW + 100 || this.y > tH + 100) this.reset();
+        }
+      };
+      ShootingStar.prototype.draw = function () {
+        if (this.alpha <= 0) return;
+        var ex = this.x - Math.cos(this.angle) * this.len;
+        var ey = this.y - Math.sin(this.angle) * this.len;
+        var grad = tCtx.createLinearGradient(this.x, this.y, ex, ey);
+        grad.addColorStop(0, 'rgba(245,208,122,' + this.alpha + ')');
+        grad.addColorStop(1, 'rgba(245,208,122,0)');
+        tCtx.beginPath();
+        tCtx.moveTo(this.x, this.y);
+        tCtx.lineTo(ex, ey);
+        tCtx.strokeStyle = grad;
+        tCtx.lineWidth = 2;
+        tCtx.stroke();
+        // Head glow
+        tCtx.beginPath();
+        tCtx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+        tCtx.fillStyle = 'rgba(255,241,198,' + this.alpha + ')';
+        tCtx.fill();
+      };
+
+      for (var s = 0; s < 5; s++) {
+        var star = new ShootingStar();
+        star.wait = Math.random() * 300 + s * 80;
+        tStars.push(star);
+      }
+
+      // Mouse tracking on team section
+      teamSection.addEventListener('mousemove', function (e) {
+        var rect = teamSection.getBoundingClientRect();
+        tMouse.x = e.clientX - rect.left;
+        tMouse.y = e.clientY - rect.top;
+      });
+      teamSection.addEventListener('mouseleave', function () {
+        tMouse.x = -999; tMouse.y = -999;
+      });
+
+      var tFrame = 0;
+      (function drawTeam() {
+        tCtx.clearRect(0, 0, tW, tH);
+        tFrame++;
+
+        // Draw constellation lines
+        for (var i = 0; i < tParticles.length; i++) {
+          for (var j = i + 1; j < tParticles.length; j++) {
+            var dx = tParticles[i].x - tParticles[j].x;
+            var dy = tParticles[i].y - tParticles[j].y;
+            var d = Math.sqrt(dx * dx + dy * dy);
+            if (d < 120) {
+              tCtx.beginPath();
+              tCtx.moveTo(tParticles[i].x, tParticles[i].y);
+              tCtx.lineTo(tParticles[j].x, tParticles[j].y);
+              var lineAlpha = 0.08 * (1 - d / 120);
+              tCtx.strokeStyle = 'rgba(212,168,67,' + lineAlpha + ')';
+              tCtx.lineWidth = 0.5;
+              tCtx.stroke();
+            }
+          }
+          tParticles[i].update(tFrame);
+          tParticles[i].draw();
+        }
+
+        // Draw mouse connection lines
+        if (tMouse.x > 0) {
+          for (var k = 0; k < tParticles.length; k++) {
+            var mdx = tParticles[k].x - tMouse.x;
+            var mdy = tParticles[k].y - tMouse.y;
+            var mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+            if (mDist < 200) {
+              tCtx.beginPath();
+              tCtx.moveTo(tMouse.x, tMouse.y);
+              tCtx.lineTo(tParticles[k].x, tParticles[k].y);
+              tCtx.strokeStyle = 'rgba(245,208,122,' + (0.15 * (1 - mDist / 200)) + ')';
+              tCtx.lineWidth = 0.8;
+              tCtx.stroke();
+            }
+          }
+          // Mouse glow
+          var mouseGrad = tCtx.createRadialGradient(tMouse.x, tMouse.y, 0, tMouse.x, tMouse.y, 100);
+          mouseGrad.addColorStop(0, 'rgba(212,168,67,0.06)');
+          mouseGrad.addColorStop(1, 'rgba(212,168,67,0)');
+          tCtx.fillStyle = mouseGrad;
+          tCtx.fillRect(tMouse.x - 100, tMouse.y - 100, 200, 200);
+        }
+
+        // Shooting stars
+        for (var ss = 0; ss < tStars.length; ss++) {
+          tStars[ss].update();
+          tStars[ss].draw();
+        }
+
+        requestAnimationFrame(drawTeam);
+      })();
+    }
+
+    /* --- 2. TILT 3D on team cards --- */
+    teamCards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = 'perspective(600px) rotateY(' + (x * 15) + 'deg) rotateX(' + (-y * 15) + 'deg) scale(1.05)';
+        // Move glow with cursor
+        var glow = card.querySelector('.team-glow');
+        if (glow) {
+          glow.style.left = (e.clientX - rect.left - 65) + 'px';
+          glow.style.top = (e.clientY - rect.top - 65) + 'px';
+        }
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+      });
+    });
+
+    /* --- 3. SPARKLE burst on card click --- */
+    teamCards.forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        var rect = card.getBoundingClientRect();
+        var cx = e.clientX - rect.left;
+        var cy = e.clientY - rect.top;
+        for (var sp = 0; sp < 24; sp++) {
+          var sparkle = document.createElement('span');
+          sparkle.className = 'team-sparkle';
+          var angle = (sp / 24) * Math.PI * 2;
+          var distance = 40 + Math.random() * 60;
+          var tx = Math.cos(angle) * distance;
+          var ty = Math.sin(angle) * distance;
+          sparkle.style.left = cx + 'px';
+          sparkle.style.top = cy + 'px';
+          sparkle.style.setProperty('--tx', tx + 'px');
+          sparkle.style.setProperty('--ty', ty + 'px');
+          sparkle.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+          sparkle.style.animationDuration = (0.5 + Math.random() * 0.4) + 's';
+          sparkle.style.background = ['#d4a843', '#f5d07a', '#5dd4a8', '#fff1c6', '#26a97e'][Math.floor(Math.random() * 5)];
+          card.appendChild(sparkle);
+          sparkle.addEventListener('animationend', function () { sparkle.remove(); });
+        }
+      });
+    });
+
+    /* --- 4. MAGNETIC hover + ripple on image --- */
+    teamCards.forEach(function (card) {
+      var imgWrap = card.querySelector('.team-img-wrap');
+      if (!imgWrap) return;
+      imgWrap.addEventListener('mouseenter', function () {
+        imgWrap.style.transition = 'transform 0.2s ease';
+      });
+      imgWrap.addEventListener('mousemove', function (e) {
+        var rect = imgWrap.getBoundingClientRect();
+        var x = (e.clientX - rect.left - rect.width / 2) * 0.2;
+        var y = (e.clientY - rect.top - rect.height / 2) * 0.2;
+        imgWrap.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(1.08)';
+      });
+      imgWrap.addEventListener('mouseleave', function () {
+        imgWrap.style.transform = '';
+        imgWrap.style.transition = 'transform 0.5s cubic-bezier(.4,0,.2,1)';
+      });
+
+      // Ripple on click
+      imgWrap.addEventListener('click', function (e) {
+        var ripple = document.createElement('span');
+        ripple.className = 'team-ripple';
+        var rect = imgWrap.getBoundingClientRect();
+        ripple.style.left = (e.clientX - rect.left) + 'px';
+        ripple.style.top = (e.clientY - rect.top) + 'px';
+        imgWrap.appendChild(ripple);
+        ripple.addEventListener('animationend', function () { ripple.remove(); });
+      });
+    });
+
+    /* --- 5. TYPING animation on title --- */
+    if (teamTitle) {
+      var line1 = teamTitle.querySelector('.team-title-line1');
+      var line2 = teamTitle.querySelector('.team-title-line2');
+      var line3 = teamTitle.querySelector('.team-title-line3');
+      var texts = [
+        { el: line1, text: line1 ? line1.textContent : '' },
+        { el: line2, text: line2 ? line2.textContent : '' },
+        { el: line3, text: line3 ? line3.textContent : '' }
+      ];
+      var typed = false;
+
+      function typeTeamTitle() {
+        if (typed) return;
+        typed = true;
+        texts.forEach(function (item) { if (item.el) item.el.textContent = ''; });
+        var lineIdx = 0;
+        function typeLine() {
+          if (lineIdx >= texts.length) return;
+          var item = texts[lineIdx];
+          var charIdx = 0;
+          if (!item.el) { lineIdx++; typeLine(); return; }
+          item.el.classList.add('team-typing');
+          var interval = setInterval(function () {
+            item.el.textContent = item.text.slice(0, charIdx + 1);
+            charIdx++;
+            if (charIdx >= item.text.length) {
+              clearInterval(interval);
+              item.el.classList.remove('team-typing');
+              lineIdx++;
+              setTimeout(typeLine, 200);
+            }
+          }, 50);
+        }
+        typeLine();
+      }
+
+      // Trigger when section is visible
+      var titleObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            setTimeout(typeTeamTitle, 500);
+            titleObs.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      titleObs.observe(teamSection);
+    }
+
+    /* --- 6. SCROLL-driven parallax for orbs --- */
+    var orbs = teamSection.querySelectorAll('.team-bg-orb');
+    window.addEventListener('scroll', function () {
+      var rect = teamSection.getBoundingClientRect();
+      var progress = -rect.top / (rect.height || 1);
+      orbs.forEach(function (orb, idx) {
+        var speed = (idx + 1) * 30;
+        orb.style.transform = 'translateY(' + (progress * speed) + 'px)';
+      });
+    });
+
+    /* --- 7. GLOW trail following mouse on section --- */
+    var glowTrail = document.createElement('div');
+    glowTrail.className = 'team-mouse-glow';
+    teamSection.appendChild(glowTrail);
+    teamSection.addEventListener('mousemove', function (e) {
+      var rect = teamSection.getBoundingClientRect();
+      glowTrail.style.left = (e.clientX - rect.left) + 'px';
+      glowTrail.style.top = (e.clientY - rect.top) + 'px';
+      glowTrail.style.opacity = '1';
+    });
+    teamSection.addEventListener('mouseleave', function () {
+      glowTrail.style.opacity = '0';
+    });
+
+    /* --- 8. CONFETTI explosion on badge click --- */
+    if (teamBadge) {
+      teamBadge.style.cursor = 'pointer';
+      teamBadge.addEventListener('click', function (e) {
+        var rect = teamBadge.getBoundingClientRect();
+        var sx = rect.left + rect.width / 2;
+        var sy = rect.top + rect.height / 2;
+        for (var c = 0; c < 50; c++) {
+          var conf = document.createElement('span');
+          conf.className = 'team-confetti';
+          conf.style.left = sx + 'px';
+          conf.style.top = sy + 'px';
+          conf.style.background = ['#d4a843', '#f5d07a', '#5dd4a8', '#1a7a5e', '#fff1c6', '#c0392b', '#26a97e'][Math.floor(Math.random() * 7)];
+          conf.style.setProperty('--cx', ((Math.random() - 0.5) * 400) + 'px');
+          conf.style.setProperty('--cy', (-(Math.random() * 300 + 100)) + 'px');
+          conf.style.setProperty('--cr', (Math.random() * 1080 - 540) + 'deg');
+          conf.style.animationDuration = (0.8 + Math.random() * 0.8) + 's';
+          conf.style.width = (4 + Math.random() * 6) + 'px';
+          conf.style.height = (4 + Math.random() * 6) + 'px';
+          document.body.appendChild(conf);
+          conf.addEventListener('animationend', function () { conf.remove(); });
+        }
+        // Scale bounce
+        teamBadge.style.transform = 'scale(1.2)';
+        setTimeout(function () { teamBadge.style.transform = ''; }, 300);
+      });
+    }
+
+    /* --- 9. REVEAL members on scroll with stagger --- */
+    var memberObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('team-visible');
+          memberObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    teamMembers.forEach(function (m) { memberObs.observe(m); });
+
+    /* --- 10. RANDOM floating emojis --- */
+    var emojis = ['✨', '⭐', '🌟', '💫', '🔥', '🎓', '📚', '🏆'];
+    setInterval(function () {
+      var rect = teamSection.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return; // only when visible
+      var emoji = document.createElement('span');
+      emoji.className = 'team-float-emoji';
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = (Math.random() * 100) + '%';
+      emoji.style.fontSize = (12 + Math.random() * 16) + 'px';
+      emoji.style.animationDuration = (3 + Math.random() * 3) + 's';
+      teamSection.appendChild(emoji);
+      emoji.addEventListener('animationend', function () { emoji.remove(); });
+    }, 800);
+
+    /* --- 11. NAME GLOW on hover cycle --- */
+    teamCards.forEach(function (card) {
+      var name = card.querySelector('.team-name');
+      if (!name) return;
+      card.addEventListener('mouseenter', function () {
+        name.classList.add('team-name-glow');
+      });
+      card.addEventListener('mouseleave', function () {
+        name.classList.remove('team-name-glow');
+      });
+    });
+
+    /* --- 12. IMAGE ring pulse on hover --- */
+    teamCards.forEach(function (card) {
+      var wrap = card.querySelector('.team-img-wrap');
+      if (!wrap) return;
+      card.addEventListener('mouseenter', function () {
+        var ring = document.createElement('span');
+        ring.className = 'team-ring-pulse';
+        wrap.appendChild(ring);
+        ring.addEventListener('animationend', function () { ring.remove(); });
+      });
+    });
+
+  })();
+
 })();
